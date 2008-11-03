@@ -3,6 +3,7 @@
     <wb-module deploy-name="PayLess">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/principal"/>
         <property name="context-root" value="PayLess"/>
         <property name="java-output-path"/>
     </wb-module>
