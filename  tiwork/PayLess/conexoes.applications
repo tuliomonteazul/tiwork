@@ -1,0 +1,11 @@
+Funcionario.inserir=INSERT INTO FUNCIONARIO VALUES(?,?,?,?,?,?,?)
+Funcionario.pegar=SELECT * FROM FUNCIONARIO WHERE LOGIN LIKE ?
+Funcionario.deletar=REMOVE FROM FUNCIONARIO WHERE LOGIN LIKE ?
+
+Quarto.inserir=INSERT INTO QUARTO VALUES(?,?,?,?)
+Quarto.pegar=SELECT * FROM QUARTO WHERE NUMERO = ?
+Quarto.alugar=UPDATE QUARTO SET STATUS='Alugado' WHERE NUMERO=?
+Quarto.remover=REMOVE FROM QUARTO WHERE NUMERO=?
+Locacao.adicionarLocacao=Insert into Locacao values(?,?,?,?,?)
+
+Cliente.pegar=SELECT * FROM CLIENTE WHERE LOGIN LIKE ?
