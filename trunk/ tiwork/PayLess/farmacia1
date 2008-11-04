@@ -1,0 +1,41 @@
+/*C11*/SET SCHEMA PUBLIC
+CONNECT USER SA
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+CONNECT USER SA
+create table func(login\u000avarchar(10) not null ,senha varchar(10) not null, primary key(login,senha))
+create table farmaceutico\u000a(login\u000avarchar(10) not null ,senha varchar(10) not null, primary key(login,senha))
+create table medidas(cod integer not null identity primary key,tipo varchar(4) not null)
+create table medicamentos\u000a(cod integer not null identity primary key,nome varchar(10) not null ,principio_ativo varchar(5) not null,tipo_medicamento varchar(10) not null,peso double\u000anot null,medida integer not null,quantidade integer,foreign key(medida) references medidas(cod),\u000acheck(tipo_medicamento in('drageas','suspensao')) )
+create table sintomas(cod integer not null identity primary key,descricao varchar(30) not null)
+create table doenca(cod integer not null identity primary key,descricao varchar(60) not null)
+create table doenca_medicacao(cod_medicamento integer not null,cod_doenca integer not null,foreign key(cod_doenca)\u000areferences doenca(cod),foreign key(cod_medicamento) references medicamentos(cod))
+create table doenca_sintomas(cod_doenca integer not null,cod_sintomas integer not null,foreign key(cod_doenca) references medicamentos(cod)\u000a,foreign key(cod_sintomas) references sintomas(cod))
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C14*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C13*/DISCONNECT
+/*C14*/DISCONNECT
+/*C15*/SET SCHEMA PUBLIC
+CONNECT USER SA
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C17*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C16*/DISCONNECT
+/*C17*/DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C19*/SET SCHEMA PUBLIC
+CONNECT USER SA
+/*C18*/DISCONNECT
+/*C19*/INSERT INTO DOENCA VALUES(0,'gripe')
+INSERT INTO SINTOMAS VALUES(0,'dor de cabeca\u000a')
+INSERT INTO MEDIDAS VALUES(0,'mg')
+INSERT INTO MEDICAMENTOS VALUES(3,'benegripe','bez','suspensao',1.0E0,0,1)
+INSERT INTO FUNC VALUES('bruno','123')
+INSERT INTO FARMACEUTICO VALUES('tulio','123')
+INSERT INTO DOENCA_SINTOMAS VALUES(3,0)
