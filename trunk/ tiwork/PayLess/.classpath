@@ -2,11 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="principal"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.6.0_03"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.6.0_02"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/Ricardo/workspace/PayLess/WebContent/WEB-INF/lib/displaytag-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/Ricardo/workspace/PayLess/WebContent/WEB-INF/lib/hsqldb.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/Ricardo/workspace/PayLess/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/lbd18-21/Desktop/workspace/PayLess/WebContent/WEB-INF/lib/displaytag-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/lbd18-21/Desktop/workspace/PayLess/WebContent/WEB-INF/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/lbd18-21/Desktop/workspace/PayLess/WebContent/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
