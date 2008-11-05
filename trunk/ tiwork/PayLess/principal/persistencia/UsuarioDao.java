@@ -1,9 +1,13 @@
 package persistencia;
 
+import java.sql.SQLException;
+
 import beans.Usuario;
 
 public interface UsuarioDao {
- void cadastrarUsuario(Usuario u,String tipo);
- Usuario trazer(String login,String senha);
- void removerUsuario(Usuario u);
+ void cadastrarFuncionario(Usuario u)throws SQLException;
+ Usuario trazerFarmaceutico(String login,String senha)throws SQLException;
+ void removerFuncionario(Usuario u)throws SQLException;
+ Usuario trazerFuncionario(String login,String senha)throws SQLException;
+ void cadastrarFarmaceutico(Usuario u)throws SQLException;
 }

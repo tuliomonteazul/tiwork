@@ -9,3 +9,10 @@ Quarto.remover=REMOVE FROM QUARTO WHERE NUMERO=?
 Locacao.adicionarLocacao=Insert into Locacao values(?,?,?,?,?)
 
 Cliente.pegar=SELECT * FROM CLIENTE WHERE LOGIN LIKE ?
+
+
+
+
+
+Cadastrar.Farmaceutico=INSERT INTO FARMACEUTICO (LOGIN,SENHA) VALUES (?,?)
+Pegar.Farmaceutico=SELECT * FROM FARMACEUTICO WHERE LOGIN LIKE ? AND SENHA LIKE ?

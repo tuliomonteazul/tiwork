@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import beans.Medicamentos;
 import beans.Remedio;
 
 public class MedicamentoHsql implements MedicamentosDao {
-
-	@Override
+	private HsqlSource hsql;
+	public MedicamentoHsql() throws ClassNotFoundException, SQLException{
+		hsql = HsqlSource.getInstance();
+	}
 	public void cadastrarMedicamentos(Medicamentos m) {
 		// TODO Auto-generated method stub
 
