@@ -8,7 +8,7 @@ public class HsqlSource {
 private static HsqlSource hsql;
 private Connection conn;
 
-	private static HsqlSource getInstance() throws ClassNotFoundException, SQLException{
+	public static HsqlSource getInstance() throws ClassNotFoundException, SQLException{
 		if(hsql ==  null){
 			hsql = new HsqlSource();
 		}
@@ -16,8 +16,8 @@ private Connection conn;
 	}
 
 	private HsqlSource() throws ClassNotFoundException, SQLException{
-	Class.forName("");
-	conn = DriverManager.getConnection("","","");
+	Class.forName("org.hsqldb.jdbcDriver");
+	conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa","");
 	
 	}
 
