@@ -6,5 +6,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/apache/Tomcat 6.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Ricardo/workspace/PayLess/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/apache/Tomcat 6.0/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/apache/Tomcat 6.0/lib/annotations-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
