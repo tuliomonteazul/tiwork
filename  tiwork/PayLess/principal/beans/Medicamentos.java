@@ -1,9 +1,9 @@
 package beans;
 
 public class Medicamentos {
-	private String nome,principioAtivo,tipo,medida;
+	private String nome,principioAtivo,tipo;
 	private double peso;
-	private int quantidade;
+	private int quantidade,medida;
 	public String getNome() {
 		return nome;
 	}
@@ -22,10 +22,10 @@ public class Medicamentos {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public String getMedida() {
+	public int getMedida() {
 		return medida;
 	}
-	public void setMedida(String medida) {
+	public void setMedida(int medida) {
 		this.medida = medida;
 	}
 	public double getPeso() {

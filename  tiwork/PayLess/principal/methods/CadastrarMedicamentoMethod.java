@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fachada.Facade;
+
 import negocio.MedicamentoNegocio;
 
 import beans.Medicamentos;
@@ -18,34 +20,34 @@ public class CadastrarMedicamentoMethod implements Method{
 			throws ServletException, IOException {
 		
 		Medicamentos med = new Medicamentos();
-		MedicamentoNegocio negocio;
 		
 		try {
-			negocio = new MedicamentoNegocio();
-		
+			Facade negocio = Facade.getInstance();
 			if("dragea".equalsIgnoreCase(req.getParameter("tipo"))){
 				
 				med.setNome(req.getParameter("nome"));
 				med.setPrincipioAtivo(req.getParameter("principio"));
 				med.setTipo(req.getParameter("tipo"));
 				med.setPeso(Double.parseDouble(req.getParameter("peso")));
-				med.setMedida(req.getParameter("medida"));
+				med.setMedida(Integer.parseInt(req.getParameter("medida")));
 				med.setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
 			}else{
 				med.setNome(req.getParameter("nome"));
 				med.setPrincipioAtivo(req.getParameter("principio"));
 				med.setTipo(req.getParameter("tipo"));
 				med.setPeso(Double.parseDouble(req.getParameter("peso")));
-				med.setMedida(req.getParameter("medida"));
+				med.setMedida(Integer.parseInt(req.getParameter("medida")));
 					
 			}
-			negocio.cadastrarMedicamentos(med, req.getParameter("tipo"));
+			negocio.cadastrarMedicamentos(med,req.getParameter("tipo"));
 				
-		
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
