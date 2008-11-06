@@ -1,5 +1,7 @@
 package negocio;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -12,13 +14,21 @@ import beans.Remedio;
 
 public class MedicamentoNegocio{
 	private MedicamentosDao med;
-	public MedicamentoNegocio() throws ClassNotFoundException, SQLException{
+	public MedicamentoNegocio() throws ClassNotFoundException, SQLException, FileNotFoundException, IOException{
 		med =  new MedicamentoHsql();
 	}
 	
-	public void cadastrarMedicamentos(Medicamentos m,String tipo) {
-		// TODO Auto-generated method stub
-		
+	public void cadastrarMedicamentos(Medicamentos m,String tipo) throws Exception {
+		if("dragea".equals(tipo)){
+			if(m.getQuantidade() == 0 || m.getQuantidade() < 0){
+				throw new Exception();
+			}else{
+				med.cadastrarMedicamentos(m);
+			}
+			
+		}else{
+			med.cadastrarMedicamentos(m);
+		}
 	}
 
 	public List<Medicamentos> listar() {

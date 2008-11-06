@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +8,8 @@ import beans.Medicamentos;
 import beans.Remedio;
 
 public interface MedicamentosDao {
- void cadastrarMedicamentos(Medicamentos m);
- Medicamentos trazer(String nomeMedicamento);
- List<Medicamentos> listar();
- List<Remedio> listarRemediosPorData(Date dataInicio,Date dataFim);
+ void cadastrarMedicamentos(Medicamentos m)throws SQLException;
+ Medicamentos trazer(String nomeMedicamento)throws SQLException;
+ List<Medicamentos> listar()throws SQLException;
+ List<Remedio> listarRemediosPorData(Date dataInicio,Date dataFim)throws SQLException;
 }
