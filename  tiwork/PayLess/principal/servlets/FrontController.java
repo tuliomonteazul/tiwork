@@ -14,7 +14,7 @@ import methods.Method;
 public class FrontController extends HttpServlet {
 
 	private void calledMethod(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nomeDaClasse = "methods."+request.getParameter("Method")+"Method";
+		String nomeDaClasse = "methods."+request.getParameter("method")+"Method";
 		try {
 			Method method = (Method) Class.forName(nomeDaClasse).newInstance();
 			method.doMethod(request, response);
