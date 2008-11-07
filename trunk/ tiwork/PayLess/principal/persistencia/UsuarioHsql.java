@@ -54,7 +54,7 @@ public class UsuarioHsql implements UsuarioDao {
 			usuario.setNome(res.getString("nome"));
 			usuario.setSenha(res.getString("senha"));
 			usuario.setLogin(res.getString("login"));
-			usuario.setPapel(res.getString("papel"));
+			usuario.setPapel(res.getInt("papel"));
 				
 		}
 		return usuario;
@@ -77,7 +77,7 @@ public class UsuarioHsql implements UsuarioDao {
 			usuario.setNome(res.getString("nome"));
 			usuario.setSenha(res.getString("senha"));
 			usuario.setLogin(res.getString("login"));
-			usuario.setPapel(res.getString("papel"));
+			usuario.setPapel(res.getInt("papel"));
 				
 		}
 		return usuario;
