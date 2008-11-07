@@ -5,24 +5,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class HsqlSource {
-private static HsqlSource hsql;
-private Connection conn;
+	private static HsqlSource hsql;
+	private Connection conn;
 
-	public static HsqlSource getInstance() throws ClassNotFoundException, SQLException{
-		if(hsql ==  null){
+	public static HsqlSource getInstance() throws ClassNotFoundException,
+			SQLException {
+		if (hsql == null) {
 			hsql = new HsqlSource();
 		}
 		return hsql;
 	}
 
-	private HsqlSource() throws ClassNotFoundException, SQLException{
-	Class.forName("org.hsqldb.jdbcDriver");
-	conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa","");
-	
+	private HsqlSource() throws ClassNotFoundException, SQLException {
+		Class.forName("org.hsqldb.jdbcDriver");
+		conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/",
+				"sa", "");
+
 	}
 
-	public Connection getConnection(){
+	public Connection getConnection() {
 		return conn;
 	}
-	
+
 }
