@@ -10,7 +10,9 @@ Locacao.adicionarLocacao=Insert into Locacao values(?,?,?,?,?)
 
 Cliente.pegar=SELECT * FROM CLIENTE WHERE LOGIN LIKE ?
 
-
+Usuario.pegar=SELECT * FROM USUARIO WHERE LOGIN LIKE ?
+Usuario.pegar.funcionario=SELECT * FROM USUARIO WHERE LOGIN LIKE ? AND PAPEL = 1
+Usuario.pegar.farmaceutico=SELECT * FROM USUARIO WHERE LOGIN LIKE ? AND PAPEL = 2
 
 
 
