@@ -10,6 +10,43 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form  action="/Controller?method=CadastrarMedicamento" method="post">
+		<table>
+			<tr>
+				<td>Nome: <input type='text' name='nome' size="30"/></td>
+			</tr>
+			<tr>
+				<td>Principio Ativo: <input type='text' name='principio' size="30"/></td>
+			</tr>
+			<tr>
+				<td>Tipo Medicamento: 
+					<select  name='tipo' >
+						<option value='dragea'>Drágea</option>
+						<option value='suspensao'>Suspensão</option>
+					</select>	
+				</td>
+			</tr>
+			<tr>
+				<td>Peso: <input type='text' name='peso'/> </td>
+			</tr>
+			<tr>
+				<td>Medida: <select name='medida'>
+						 		<c:forEach var="item" items="${medidas}">
+									<option value='${item}'>${item}</option>		 
+								 </c:forEach>
+							</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Quantidade: <input type='text' name='quantidade'/></td>
+			</tr>
+			<tr>
+				<td>
+					<input type='submit' value='OK'/>
+				</td>
+			</tr>
+		</table>
+	</form>
 
 </body>
 </html>

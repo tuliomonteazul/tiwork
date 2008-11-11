@@ -36,10 +36,23 @@ public class MedicamentoHsql implements MedicamentosDao {
 		stat.execute();
 	}
 
-	@Override
-	public List<Medicamentos> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Medicamentos> listar() throws SQLException {
+		stat = query.getPrepared(con, "Listar.Medicamentos");
+		
+		res = stat.executeQuery();
+		List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
+		Medicamentos med = null;
+		while(res.next()){
+			med = new Medicamentos();
+			med.setNome(res.getString("nome"));
+			med.setMedida(res.getInt("medida"));
+			med.setPeso(res.getDouble("peso"));
+			med.setPrincipioAtivo(res.getString("principio_ativo"));
+			med.setQuantidade(res.getInt("quantidade"));
+			med.setTipo(res.getString("tipo_medicamento"));
+			medicamentos.add(med);
+		}
+		return medicamentos;
 	}
 
 	@Override
@@ -72,6 +85,16 @@ public class MedicamentoHsql implements MedicamentosDao {
 		List<Medicamentos>medicamentos = new ArrayList<Medicamentos>();
 		stat = query.getPrepared(con,"Trazer.Medicamento.Sintoma");
 		return null;
+	}
+	@Override
+	public List<String> listarMedidas() throws SQLException {
+		List<String> medidas = new ArrayList<String>();
+		stat = query.getPrepared(con, "Listar.Medidas");
+		res = stat.executeQuery();
+		while(res.next()){
+			medidas.add(res.getString("tipo"));
+		}
+		return medidas;
 	}
 
 }
