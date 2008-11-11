@@ -10,25 +10,30 @@
 <body>
 <table width="300" align="center">
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
-	<tr><td><fieldset><legend>Login</legend>
-	<form action="Controller?method=EfetuarAluguel" method='post'>
-		<input type='hidden' name="method" value='CadastroQuarto'/>
+	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
+	<form action="Controller?method=CadastrarUsuario" method='post'>
 		<table>
 			<tr>
-				<td>Cpf:</td><td><input type='text' name='cpf'/></td>
+				<td>Nome:</td><td><input type='text' name='nome'/></td>
 			</tr>
 			<tr>
-				<td>Quarto:</td><td><input type='text' name='numero'/></td>
+				<td>Login:</td><td><input type='text' name='login'/></td>
 			</tr>	
 			<tr>
-				<td>Data Saída:</td><td><input type='text' name='dataSaida' maxlength="10" onkeypress="mascara(this,dataValidacao)"/></td>
+				<td>Senha:</td><td><input type='password' name='senha'/></td>
 			</tr>
 			<tr>
-				<td>Quantidade:</td><td><input type='text' name='hospedados'/></td>
+				<td>Papel:</td>
+				<td>
+					<select name="papel">
+						<option value="1">1 - Funcionário</option>
+						<option value="2">2 - Farmacêutico</option>
+					</select>
+				</td>
 			</tr>
-			<tr>
-			<input type='submit' value='ok'/>
-			</tr>
+			<tr><td>
+			<input type='submit' value='Cadastrar'/>
+			</td></tr>
 		</table>
 
 	</form>
