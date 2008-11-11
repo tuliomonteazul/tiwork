@@ -44,9 +44,9 @@ public class DoencaHsql implements DoencaDao {
 		while(res.next()){
 			aux = new Doencas();
 			aux.setNome(res.getString("DESCRICAO"));
-			stat = 
+			doencas.add(aux);
 		}
-		return null;
+		return doencas;
 	}
 
 }

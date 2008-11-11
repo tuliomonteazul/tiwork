@@ -20,7 +20,7 @@ public class MedicamentoNegocio{
 	
 	public void cadastrarMedicamentos(Medicamentos m,String tipo) throws Exception {
 		if("dragea".equals(tipo)){
-			if(m.getQuantidade() == 0 || m.getQuantidade() < 0){
+			if( m.getQuantidade() <= 0){
 				throw new Exception();
 			}else{
 				med.cadastrarMedicamentos(m);
@@ -31,11 +31,16 @@ public class MedicamentoNegocio{
 		}
 	}
 
-	public List<Medicamentos> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Medicamentos> listar() throws SQLException {
+		List<Medicamentos> medicamentos = med.listar();
+		return medicamentos;
 	}
 
+	public List<String> listarMedidas() throws SQLException{
+		return med.listarMedidas();
+		
+	}
+	
 	public List<Remedio> listarRemediosPorData(Date dataInicio, Date dataFim) throws Exception {
 		List<Remedio> remedio;
 		if(dataInicio.compareTo(dataFim)>0){
