@@ -45,7 +45,7 @@ public class UsuarioHsql implements UsuarioDao {
 	public Usuario trazerFarmaceutico(String login)
 			throws SQLException {
 		stat = query.getPrepared(con, "Usuario.pegar.farmaceutico" );
-		stat.setString(0, login);
+		stat.setString(1, login);
 		res = stat.executeQuery();
 		Usuario usuario = null;
 		if(res.next()){
@@ -68,7 +68,30 @@ public class UsuarioHsql implements UsuarioDao {
 	public Usuario trazerFuncionario(String login)
 			throws SQLException {
 		stat = query.getPrepared(con,"Usuario.pegar.funcionario" );
-		stat.setString(0,login);
+		stat.setString(1,login);
+		res = stat.executeQuery();
+		Usuario usuario = null;
+		if(res.next()){
+			usuario = new Usuario();
+			usuario.setNome(res.getString("nome"));
+			usuario.setSenha(res.getString("senha"));
+			usuario.setLogin(res.getString("login"));
+			usuario.setPapel(res.getInt("papel"));
+				
+		}
+		return usuario;
+	}
+	
+	/*
+	 * Metódo para retornar um usuario pelo seu login
+	 *
+	 * @param String
+	 * @return Usuario
+	*/
+	public Usuario trazerUsuario(String login)
+			throws SQLException {
+		stat = query.getPrepared(con,"Usuario.pegar" );
+		stat.setString(1,login);
 		res = stat.executeQuery();
 		Usuario usuario = null;
 		if(res.next()){
