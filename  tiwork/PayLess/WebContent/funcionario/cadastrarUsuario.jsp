@@ -37,7 +37,8 @@
 		</table>
 
 	</form>
-	<tr><td>Login: ${login} (<a href="Controller?method=Logout">logout</a>)</td></tr>
+	</fieldset></td></tr>
+	<tr><td><a href="funcionario.jsp">Voltar</a></td><td align="right">Login: ${login} - <a href="Controller?method=Logout">(logout)</a></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 	<div id="msg"></div>
 	</font></td></tr>
