@@ -29,7 +29,7 @@ public class EfetuarLoginMethod implements Method{
 				if (usuario.getPapel() == 1){
 					if (usuario.getSenha().equalsIgnoreCase(senha)){
 						req.getSession().setAttribute("login", usuario.getLogin());
-						d = req.getRequestDispatcher("funcionario.jsp");
+						d = req.getRequestDispatcher("funcionario/funcionario.jsp");
 					}else {
 						req.setAttribute("erro", "Senha incorreta");
 						d = req.getRequestDispatcher("index.jsp");
@@ -40,7 +40,7 @@ public class EfetuarLoginMethod implements Method{
 					if (usuario.getPapel() == 2){
 						if (usuario.getSenha().equalsIgnoreCase(senha)){
 							req.getSession().setAttribute("login", usuario.getLogin());
-							d = req.getRequestDispatcher("farmaceutico.jsp");
+							d = req.getRequestDispatcher("farmaceutico/farmaceutico.jsp");
 						}else {
 							req.setAttribute("erro", "Senha incorreta");
 							d = req.getRequestDispatcher("index.jsp");
