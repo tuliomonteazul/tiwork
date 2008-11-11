@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,6 +65,13 @@ public class MedicamentoHsql implements MedicamentosDao {
 				
 		}
 		return med;
+	}
+	@Override
+	public List<Medicamentos> trazerPorSintoma(String sintomas)
+			throws SQLException {
+		List<Medicamentos>medicamentos = new ArrayList<Medicamentos>();
+		stat = query.getPrepared(con,"Trazer.Medicamento.Sintoma");
+		return null;
 	}
 
 }

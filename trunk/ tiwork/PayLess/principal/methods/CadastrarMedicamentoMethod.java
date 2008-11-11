@@ -1,3 +1,4 @@
+
 package methods;
 
 import java.io.IOException;
@@ -15,7 +16,6 @@ import beans.Medicamentos;
 
 public class CadastrarMedicamentoMethod implements Method{
 
-	@Override
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
