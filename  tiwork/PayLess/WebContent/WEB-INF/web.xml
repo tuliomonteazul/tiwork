@@ -16,7 +16,7 @@
 		<url-pattern>/Controller</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-			<welcome-file>inicio.jsp</welcome-file>
+			<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
  	<login-config>
 		<auth-method>FORM</auth-method>
