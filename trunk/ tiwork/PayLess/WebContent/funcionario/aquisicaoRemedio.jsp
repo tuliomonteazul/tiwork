@@ -5,45 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Hotel California</title>
+<title>Pay Less</title>
 <link rel=stylesheet href="padrao.css" type="text/css">
 </head>
 <body>
 <table width="300" align="center">
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
-	<form action="Controller?method=CadastrarUsuario" method='post'>
+	<form action="Controller?method=AquisicaoRemedioInserir" method='post'>
 		<table>
 			<tr>
 				<td>Medicamento:</td>
 				<td>
 					<select name="medicamento">
-						<
+						<c:forEach var="m" items="medicamentos">
+							<option value="${m.cod}">${m.cod} - ${m.nome}</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>Quantidade:</td><td><input type='text' name='login'/></td>
+				<td>Quantidade:</td><td><input type='text' name='quantidade'/></td>
 			</tr>	
 			<tr>
-				<td>Valor Unitário:</td><td><input type='password' name='senha'/></td>
-			</tr>
-			<tr>
-				<td>Papel:</td>
-				<td>
-					<select name="papel">
-						<option value="1">1 - Funcionário</option>
-						<option value="2">2 - Farmacêutico</option>
-					</select>
-				</td>
+				<td>Valor Unitário:</td><td><input type='text' name='valor'/></td>
 			</tr>
 			<tr><td>
-			<input type='submit' value='Cadastrar'/>
+			<input type='submit' value='Inserir'/>
 			</td></tr>
 		</table>
 
 	</form>
-	<tr><td>Login: ${login} (<a href="Controller?method=Logout">logout</a>)</td></tr>
+	<tr><td><table><tr><td><a href="funcionario.jsp">Voltar</a></td><td align="right">Login: ${login} - <a href="Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 	<div id="msg"></div>
 	</font></td></tr>

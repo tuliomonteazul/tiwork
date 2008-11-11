@@ -36,11 +36,11 @@
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Funcionario</legend>
 		<table>
-			<tr><td><a href="cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
-			<tr><td><a href="aquisicaoRemedio.jsp">Aquisição de Remédio</a></td></tr>
-			<tr><td><a href="efetuarVenda.jsp">Efetuar Venda de Remédio</a></td></tr>
-			<tr><td><a href="buscarRemedio.jsp">Buscar Rémedio por Sintomas</a></td></tr>
-			<tr><td><a href="visualizarVendas.jsp">Visualizar Detalhes de Vendas</a></td></tr>
+			<tr><td><a href="/PayLess/funcionario/cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
+			<tr><td><a href="Controller?method=AquisicaoRemedioListar">Aquisição de Remédio</a></td></tr>
+			<tr><td><a href="/PayLess/funcionario/efetuarVenda.jsp">Efetuar Venda de Remédio</a></td></tr>
+			<tr><td><a href="/PayLess/funcionario/buscarRemedio.jsp">Buscar Rémedio por Sintomas</a></td></tr>
+			<tr><td><a href="/PayLess/funcionario/visualizarVendas.jsp">Visualizar Detalhes de Vendas</a></td></tr>
 		</table>
 	
 	</fieldset></td></tr>

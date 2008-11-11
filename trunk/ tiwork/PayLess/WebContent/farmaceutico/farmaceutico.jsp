@@ -36,11 +36,11 @@
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Farmaceutico</legend>
 		<table>
-			<tr><td><a href="cadastrarMedicamento.jsp">Cadastrar Medicamento</a></td></tr>
-			<tr><td><a href="cadastrarTipoDeDoencas.jsp">Cadastrar Tipo de Doenças</a></td></tr>
-			<tr><td><a href="cadastrarSintomas.jsp">Cadastrar Sintomas</a></td></tr>
-			<tr><td><a href="cadastrarMedicacao.jsp">Cadastrar Medicação</a></td></tr>
-			<tr><td><a href="visualizarRemedios.jsp">Visualizar Remédios</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/cadastrarMedicamento.jsp">Cadastrar Medicamento</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/cadastrarTipoDeDoencas.jsp">Cadastrar Tipo de Doenças</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/cadastrarSintomas.jsp">Cadastrar Sintomas</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/cadastrarMedicacao.jsp">Cadastrar Medicação</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/visualizarRemedios.jsp">Visualizar Remédios</a></td></tr>
 		</table>
 
 	</fieldset></td></tr>
