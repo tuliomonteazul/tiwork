@@ -17,38 +17,42 @@ public class EfetuarLoginMethod implements Method{
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		
-		
 		try {
-			RequestDispatcher r = req.getRequestDispatcher("index.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("index.jsp");;
 			Usuario usuario = null;
 			UsuarioHsql usuarioHsql = new UsuarioHsql();
 			String login = req.getParameter("login");
 			String senha = req.getParameter("senha");
-			usuario = usuarioHsql.trazerFarmaceutico(login);
+			usuario = usuarioHsql.trazerUsuario(login);
 			if(usuario != null){
-				if (usuario.getSenha().equalsIgnoreCase(senha)){
-					r = req.getRequestDispatcher("farmaceutico.jsp");
-				}else {
-					req.setAttribute("erro", "Senha incorreta");
-					r = req.getRequestDispatcher("index.jsp");
-				}
-			}else{
-				usuario = usuarioHsql.trazerFuncionario(login);
-				if(usuario != null){
+				//Funcionario
+				if (usuario.getPapel() == 1){
 					if (usuario.getSenha().equalsIgnoreCase(senha)){
-						r = req.getRequestDispatcher("funcionario.jsp");
+						req.getSession().setAttribute("login", usuario.getLogin());
+						d = req.getRequestDispatcher("funcionario.jsp");
 					}else {
 						req.setAttribute("erro", "Senha incorreta");
-						r = req.getRequestDispatcher("index.jsp");
+						d = req.getRequestDispatcher("index.jsp");
 					}
+					
+				//Farmaceutico
 				}else{
-					req.setAttribute("erro", "Login inválido");
-					r = req.getRequestDispatcher("index.jsp");
+					if (usuario.getPapel() == 2){
+						if (usuario.getSenha().equalsIgnoreCase(senha)){
+							req.getSession().setAttribute("login", usuario.getLogin());
+							d = req.getRequestDispatcher("farmaceutico.jsp");
+						}else {
+							req.setAttribute("erro", "Senha incorreta");
+							d = req.getRequestDispatcher("index.jsp");
+						}
+					}
 				}
+			}else{
+				req.setAttribute("erro", "Login inválido");
+				d = req.getRequestDispatcher("index.jsp");
 			}
 			
-			r.forward(req, resp);
+			d.forward(req, resp);
 				
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
