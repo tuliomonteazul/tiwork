@@ -12,5 +12,7 @@ public interface UsuarioDao {
 	void removerFuncionario(Usuario u) throws SQLException;
 
 	Usuario trazerFuncionario(String login) throws SQLException;
+	
+	Usuario trazerUsuario(String login) throws SQLException;
 
 }
