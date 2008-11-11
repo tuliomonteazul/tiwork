@@ -39,7 +39,9 @@
 			<tr><td><a href="cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
 			<tr><td><a href="aquisicaoRemedio.jsp">Aquisição de Remédio</a></td></tr>
 		</table>
-
+	
+	</fieldset></td></tr>
+	<tr><td>Login: ${sessionScope.login} - <a href="Controller?method=Logout">(Logout)</a></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
