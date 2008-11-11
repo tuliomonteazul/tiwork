@@ -36,8 +36,7 @@
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Login</legend>
 	<form action="Controller?method=EfetuarLogin" method='post'>
-		<input type='hidden' name="method" value='CadastrarUsuario'/>
-		<table>
+		<table align="center">
 			<tr>
 				<td>Login:</td><td><input type='text' name='login'/></td>
 			</tr>
@@ -45,7 +44,7 @@
 				<td>Senha:</td><td><input type='password' name='senha'/></td>
 			</tr>	
 			<tr>
-				<td><input type='submit' value='OK'/></td>
+				<td></td><td><input type='submit' value='OK' size="200"/></td>
 			</tr>
 		</table>
 
