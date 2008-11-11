@@ -22,13 +22,12 @@ public class UsuarioHsql implements UsuarioDao {
 		query = QueryManager.getInstance();
 		con = source.getConnection();
 	}
-	public void cadastrarFuncionario(Usuario u) throws SQLException{
-		
-	}
-	public void cadastrarFarmaceutico(Usuario u)throws SQLException{
-		stat = query.getPrepared(con, "Cadastrar.Farmaceutico");	
-		stat.setString(0, u.getLogin());
-		stat.setString(1, u.getSenha());
+	public void cadastrarUsuario(Usuario usuario)throws SQLException{
+		stat = query.getPrepared(con, "Usuario.cadastrar");	
+		stat.setString(1, usuario.getNome());
+		stat.setString(2, usuario.getLogin());
+		stat.setString(3, usuario.getSenha());
+		stat.setInt(4, usuario.getPapel());
 		stat.execute();
 	}
 
