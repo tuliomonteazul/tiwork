@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import negocio.MedicamentoNegocio;
 import beans.Medicamentos;
 
-public class AquisicaoRemedioListar implements Method{
+public class AquisicaoRemedioListarMethod implements Method{
 
 	@Override
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
@@ -23,7 +23,7 @@ public class AquisicaoRemedioListar implements Method{
 		MedicamentoNegocio medicamentoNegocio = null;
 		
 		try {
-			RequestDispatcher d = req.getRequestDispatcher("aquisicaoRemedio.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("funcionario/aquisicaoRemedio.jsp");;
 			medicamentoNegocio = new MedicamentoNegocio();
 			medicamentos = medicamentoNegocio.listar();
 			req.setAttribute("medicamentos", medicamentos);
@@ -33,8 +33,6 @@ public class AquisicaoRemedioListar implements Method{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	
 	
 	}
 
