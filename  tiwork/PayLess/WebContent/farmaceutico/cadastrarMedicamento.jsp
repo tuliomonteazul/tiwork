@@ -10,7 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form  action="/Controller?method=CadastrarMedicamento" method="post">
+	<form  action="Controller" method="post">
+		<input type='hidden' name='method' value='CadastrarMedicamento'/>
 		<table>
 			<tr>
 				<td>Nome: <input type='text' name='nome' size="30"/></td>
