@@ -40,6 +40,9 @@ public class MedicamentoNegocio{
 		return med.listarMedidas();
 		
 	}
+	public String trazerMedida(String medida) throws SQLException{
+		return null;
+	}
 	
 	public List<Remedio> listarRemediosPorData(Date dataInicio, Date dataFim) throws Exception {
 		List<Remedio> remedio;
