@@ -38,7 +38,7 @@
 
 	</form>
 	</fieldset></td></tr>
-	<tr><td><a href="funcionario.jsp">Voltar</a></td><td align="right">Login: ${login} - <a href="Controller?method=Logout">(logout)</a></td></tr>
+	<tr><td><table style="width: 100%"><tr><td><a href="/PayLess/funcionario/funcionario.jsp">Voltar</a>  </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 	<div id="msg"></div>
 	</font></td></tr>
