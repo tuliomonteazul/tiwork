@@ -37,14 +37,14 @@
 	<tr><td><fieldset><legend>Funcionario</legend>
 		<table>
 			<tr><td><a href="/PayLess/funcionario/cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
-			<tr><td><a href="Controller?method=AquisicaoRemedioListar">Aquisição de Remédio</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=AquisicaoRemedioListar">Aquisição de Remédio</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/efetuarVenda.jsp">Efetuar Venda de Remédio</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/buscarRemedio.jsp">Buscar Rémedio por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/visualizarVendas.jsp">Visualizar Detalhes de Vendas</a></td></tr>
 		</table>
 	
 	</fieldset></td></tr>
-	<tr><td>Login: ${sessionScope.login} - <a href="Controller?method=Logout">(Logout)</a></td></tr>
+	<tr><td><table style="width: 100%"><tr><td></td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>

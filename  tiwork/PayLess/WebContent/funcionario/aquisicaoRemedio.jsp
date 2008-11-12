@@ -7,19 +7,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pay Less</title>
 <link rel=stylesheet href="padrao.css" type="text/css">
+<script type="text/javascript">
+	function VerificarMsg() {
+		var msgReq = "<%=request.getAttribute("msg")%>";
+		var erroReq = "<%=request.getAttribute("erro")%>";
+		var msgElem = document.getElementById('msg');
+		var erroElem = document.getElementById('erro');
+		var msg = msgElem.innerHTML;
+		var erro = erroElem.innerHTML;
+		msg = "";
+		erro = "";
+		if(msgReq!="null"){
+			msg = msgReq;
+		}
+		if(erroReq!="null"){
+			erro = erroReq;
+		}
+		msgElem.innerHTML = msg;
+		erroElem.innerHTML = erro;
+	}
+</script>
 </head>
-<body>
+<body onload="VerificarMsg()">
 <table width="300" align="center">
+	<tr><td align="center">
+		<font face="tahoma" size="2">
+		<div id="msg"></div>
+	</font></td></tr>
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
 	<form action="Controller?method=AquisicaoRemedioInserir" method='post'>
-		<table>
+		<table align="center">
 			<tr>
 				<td>Medicamento:</td>
 				<td>
 					<select name="medicamento">
-						<c:forEach var="m" items="medicamentos">
-							<option value="${m.cod}">${m.cod} - ${m.nome}</option>
+						<c:forEach var="m" items="${medicamentos}">
+							<option value="${m.nome}">${m.nome}</option>
 						</c:forEach>
 					</select>
 				</td>
@@ -36,9 +60,9 @@
 		</table>
 
 	</form>
-	<tr><td><table><tr><td><a href="funcionario.jsp">Voltar</a></td><td align="right">Login: ${login} - <a href="Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+	<tr><td><table style="width: 100%"><tr><td><a href="/PayLess/funcionario/funcionario.jsp">Voltar</a>  </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
-	<div id="msg"></div>
+		<div id="erro"></div>
 	</font></td></tr>
 </table>
 </body>
