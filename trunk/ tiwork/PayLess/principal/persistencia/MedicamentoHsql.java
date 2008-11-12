@@ -26,7 +26,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 	}
 	public void cadastrarMedicamentos(Medicamentos m) throws SQLException {
 		
-		stat = query.getPrepared(con, "Cadastrar.Medicamentos");
+		stat = query.getPrepared(con, "Medicamentos.Cadastrar");
 		stat.setString(1, m.getNome());
 		stat.setString(2, m.getPrincipioAtivo());
 		stat.setString(3, m.getTipo());
@@ -37,7 +37,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 	}
 
 	public List<Medicamentos> listar() throws SQLException {
-		stat = query.getPrepared(con, "Listar.Medicamentos");
+		stat = query.getPrepared(con, "Medicamentos.Listar");
 		
 		res = stat.executeQuery();
 		List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
@@ -63,7 +63,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 
 	@Override
 	public Medicamentos trazer(String nomeMedicamento) throws SQLException {
-		stat = query.getPrepared(con,"Pegar.Medicamentos" );
+		stat = query.getPrepared(con,"Medicamentos.Pegar" );
 		stat.setString(1,nomeMedicamento);
 		res = stat.executeQuery();
 		Medicamentos med = null;
@@ -83,13 +83,13 @@ public class MedicamentoHsql implements MedicamentosDao {
 	public List<Medicamentos> trazerPorSintoma(String sintomas)
 			throws SQLException {
 		List<Medicamentos>medicamentos = new ArrayList<Medicamentos>();
-		stat = query.getPrepared(con,"Trazer.Medicamento.Sintoma");
+		stat = query.getPrepared(con,"Medicamento.Sintoma.Trazer");
 		return null;
 	}
 	@Override
 	public List<String> listarMedidas() throws SQLException {
 		List<String> medidas = new ArrayList<String>();
-		stat = query.getPrepared(con, "Listar.Medidas");
+		stat = query.getPrepared(con, "Medidas.Listar");
 		res = stat.executeQuery();
 		while(res.next()){
 			medidas.add(res.getString("tipo"));
@@ -98,7 +98,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 	}
 	@Override
 	public String trazerMedida(String medida) throws SQLException {
-		stat  = query.getPrepared(con,"Pegar.Medidas");
+		stat  = query.getPrepared(con,"Medidas.Pegar");
 		stat.setString(1,medida);
 		res = stat.executeQuery();
 		String aux = null;
