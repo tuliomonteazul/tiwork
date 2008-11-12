@@ -44,7 +44,7 @@ public class UsuarioHsql implements UsuarioDao {
 	*/
 	public Usuario trazerFarmaceutico(String login)
 			throws SQLException {
-		stat = query.getPrepared(con, "Usuario.pegar.farmaceutico" );
+		stat = query.getPrepared(con, "Usuario.Pegar.Farmaceutico" );
 		stat.setString(1, login);
 		res = stat.executeQuery();
 		Usuario usuario = null;
@@ -67,7 +67,7 @@ public class UsuarioHsql implements UsuarioDao {
 	*/
 	public Usuario trazerFuncionario(String login)
 			throws SQLException {
-		stat = query.getPrepared(con,"Usuario.pegar.funcionario" );
+		stat = query.getPrepared(con,"Usuario.Pegar.Funcionario" );
 		stat.setString(1,login);
 		res = stat.executeQuery();
 		Usuario usuario = null;
@@ -90,7 +90,7 @@ public class UsuarioHsql implements UsuarioDao {
 	*/
 	public Usuario trazerUsuario(String login)
 			throws SQLException {
-		stat = query.getPrepared(con,"Usuario.pegar" );
+		stat = query.getPrepared(con,"Usuario.Pegar" );
 		stat.setString(1,login);
 		res = stat.executeQuery();
 		Usuario usuario = null;
