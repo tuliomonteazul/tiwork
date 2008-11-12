@@ -3,7 +3,7 @@ package beans;
 public class Medicamentos {
 	private String nome,principioAtivo,tipo;
 	private double peso;
-	private int quantidade,medida;
+	private int cod,quantidade,medida;
 	public String getNome() {
 		return nome;
 	}
@@ -39,6 +39,12 @@ public class Medicamentos {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public int getCod() {
+		return cod;
+	}
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 	
 }
