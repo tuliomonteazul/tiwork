@@ -27,12 +27,12 @@ public class MedicamentoHsql implements MedicamentosDao {
 	public void cadastrarMedicamentos(Medicamentos m) throws SQLException {
 		
 		stat = query.getPrepared(con, "Cadastrar.Medicamentos");
-		stat.setString(0, m.getNome());
-		stat.setString(1, m.getPrincipioAtivo());
-		stat.setString(2, m.getTipo());
-		stat.setDouble(3, m.getPeso());
-		stat.setInt(4,m.getMedida());
-		stat.setInt(5,m.getQuantidade());
+		stat.setString(1, m.getNome());
+		stat.setString(2, m.getPrincipioAtivo());
+		stat.setString(3, m.getTipo());
+		stat.setDouble(4, m.getPeso());
+		stat.setInt(5,m.getMedida());
+		stat.setInt(6,m.getQuantidade());
 		stat.execute();
 	}
 
@@ -64,7 +64,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 	@Override
 	public Medicamentos trazer(String nomeMedicamento) throws SQLException {
 		stat = query.getPrepared(con,"Pegar.Medicamentos" );
-		stat.setString(0,nomeMedicamento);
+		stat.setString(1,nomeMedicamento);
 		res = stat.executeQuery();
 		Medicamentos med = null;
 		if(res.next()){
@@ -95,6 +95,17 @@ public class MedicamentoHsql implements MedicamentosDao {
 			medidas.add(res.getString("tipo"));
 		}
 		return medidas;
+	}
+	@Override
+	public String trazerMedida(String medida) throws SQLException {
+		stat  = query.getPrepared(con,"Pegar.Medidas");
+		stat.setString(1,medida);
+		res = stat.executeQuery();
+		String aux = null;
+		if(res.next()){
+			aux = res.getString("tipo");
+		}
+		return aux;
 	}
 
 }
