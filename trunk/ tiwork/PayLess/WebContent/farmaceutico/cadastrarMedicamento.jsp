@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form  action="Controller" method="post">
-		<input type='hidden' name='method' value='CadastrarMedicamento'/>
+	<form  action="Controller?method=CadastrarMedicamento" method="post">
+	
 		<table>
 			<tr>
 				<td>Nome: <input type='text' name='nome' size="30"/></td>
@@ -22,7 +22,7 @@
 			<tr>
 				<td>Tipo Medicamento: 
 					<select  name='tipo' >
-						<option value='dragea'>Drágea</option>
+						<option value='drageas'>Drágea</option>
 						<option value='suspensao'>Suspensão</option>
 					</select>	
 				</td>

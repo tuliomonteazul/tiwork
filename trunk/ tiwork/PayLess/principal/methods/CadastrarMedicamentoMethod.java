@@ -23,20 +23,20 @@ public class CadastrarMedicamentoMethod implements Method{
 		
 		try {
 			Facade negocio = Facade.getInstance();
-			if("dragea".equalsIgnoreCase(req.getParameter("tipo"))){
+			if("drageas".equalsIgnoreCase(req.getParameter("tipo"))){
 				
 				med.setNome(req.getParameter("nome"));
 				med.setPrincipioAtivo(req.getParameter("principio"));
 				med.setTipo(req.getParameter("tipo"));
 				med.setPeso(Double.parseDouble(req.getParameter("peso")));
-				med.setMedida(Integer.parseInt(req.getParameter("medida")));
+				med.setMedida(req.getParameter("medida"));
 				med.setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
 			}else{
 				med.setNome(req.getParameter("nome"));
 				med.setPrincipioAtivo(req.getParameter("principio"));
 				med.setTipo(req.getParameter("tipo"));
 				med.setPeso(Double.parseDouble(req.getParameter("peso")));
-				med.setMedida(Integer.parseInt(req.getParameter("medida")));
+				med.setMedida(req.getParameter("medida"));
 					
 			}
 			negocio.cadastrarMedicamentos(med,req.getParameter("tipo"));

@@ -31,7 +31,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 		stat.setString(2, m.getPrincipioAtivo());
 		stat.setString(3, m.getTipo());
 		stat.setDouble(4, m.getPeso());
-		stat.setInt(5,m.getMedida());
+		stat.setInt(5,trazerMedidaCod(m.getMedida()));
 		stat.setInt(6,m.getQuantidade());
 		stat.execute();
 	}
@@ -45,7 +45,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 		while(res.next()){
 			med = new Medicamentos();
 			med.setNome(res.getString("nome"));
-			med.setMedida(res.getInt("medida"));
+//			med.setMedida(res.getInt("medida"));
 			med.setPeso(res.getDouble("peso"));
 			med.setPrincipioAtivo(res.getString("principio_ativo"));
 			med.setQuantidade(res.getInt("quantidade"));
@@ -74,7 +74,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 			med.setTipo(res.getString("tipo_medicamento"));
 			med.setPrincipioAtivo(res.getString("principio_ativo"));
 			med.setQuantidade(res.getInt("quantidade"));
-			med.setMedida(res.getInt("medida"));
+//			med.setMedida(trazerMedidaCod(n));
 				
 		}
 		return med;
@@ -96,14 +96,13 @@ public class MedicamentoHsql implements MedicamentosDao {
 		}
 		return medidas;
 	}
-	@Override
-	public String trazerMedida(String medida) throws SQLException {
+	private int trazerMedidaCod(String medida) throws SQLException {
 		stat  = query.getPrepared(con,"Medidas.Pegar");
 		stat.setString(1,medida);
 		res = stat.executeQuery();
-		String aux = null;
+		int aux = 0;
 		if(res.next()){
-			aux = res.getString("tipo");
+			aux = res.getInt("cod");
 		}
 		return aux;
 	}

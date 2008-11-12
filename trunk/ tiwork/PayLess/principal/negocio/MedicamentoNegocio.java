@@ -19,7 +19,7 @@ public class MedicamentoNegocio{
 	}
 	
 	public void cadastrarMedicamentos(Medicamentos m,String tipo) throws Exception {
-		if("dragea".equals(tipo)){
+		if("drageas".equals(tipo)){
 			if( m.getQuantidade() <= 0){
 				throw new Exception();
 			}else{
@@ -39,9 +39,6 @@ public class MedicamentoNegocio{
 	public List<String> listarMedidas() throws SQLException{
 		return med.listarMedidas();
 		
-	}
-	public String trazerMedida(String medida) throws SQLException{
-		return null;
 	}
 	
 	public List<Remedio> listarRemediosPorData(Date dataInicio, Date dataFim) throws Exception {
