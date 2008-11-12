@@ -18,8 +18,9 @@ public class ListarReferenciaMethod implements Method {
 		try {
 			MedicamentoNegocio med = new MedicamentoNegocio();
 			req.setAttribute("medidas", med.listarMedidas());
-			RequestDispatcher dis = req.getRequestDispatcher("/cadastrarMedicamento");
+			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarMedicamento.jsp");
 			dis.forward(req, resp);
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
