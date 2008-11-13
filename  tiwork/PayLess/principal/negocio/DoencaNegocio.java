@@ -13,10 +13,10 @@ import persistencia.DoencaHsql;
 
 public class DoencaNegocio {
 	private DoencaDao dao;
-	private MedicamentoNegocio negocio;
+	private MedicamentoNegocio med;
 	public DoencaNegocio() throws FileNotFoundException, ClassNotFoundException, SQLException, IOException{
 		dao = new  DoencaHsql();
-		negocio = new MedicamentoNegocio();
+		med = new MedicamentoNegocio();
 	}
 	public List<Doencas> trazerPorSintomas(List<String> sintomas){
 		List<Doencas> doencas = new ArrayList<Doencas>();
@@ -32,10 +32,10 @@ public class DoencaNegocio {
 	public void cadastrarDoenca(Doencas doenca) throws SQLException{
 		dao.cadastrarDoenca(doenca);
 		for(String sintomas:doenca.getSintomas()){
-			dao.insereSintoma(sintomas);
+			dao.insereSintoma(doenca.getNome(),sintomas);
 		}
-		for(Medicamentos med:doenca.getMedicamentos()){
-			negocio.insereDoenca(med.getNome());
+		for(Medicamentos medicamento:doenca.getMedicamentos()){
+			med.insereMedicacaoParaDoenca(doenca,medicamento);
 		}
 	}
 	

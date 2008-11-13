@@ -41,9 +41,10 @@ public class DoencaHsql implements DoencaDao {
 	
 			
 	}
-	public void insereSintoma(String sintoma) throws SQLException{
+	public void insereSintoma(String doenca,String sintoma) throws SQLException{
 		stat = query.getPrepared(conn, "SintomasDoenca.inserir");
-		stat.setInt(1,trazerSintomaCod(sintoma));
+		stat.setInt(1, trazerDoenca(doenca).getCod());
+		stat.setInt(2,trazerSintomaCod(sintoma));
 		stat.execute();
 		
 	}

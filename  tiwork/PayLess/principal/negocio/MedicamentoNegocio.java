@@ -9,6 +9,7 @@ import java.util.List;
 import persistencia.MedicamentoHsql;
 import persistencia.MedicamentosDao;
 
+import beans.Doencas;
 import beans.Medicamentos;
 import beans.Remedio;
 
@@ -56,8 +57,8 @@ public class MedicamentoNegocio{
 		}
 		return med.trazer(nomeMedicamento);
 	}
-	public void insereDoenca(String doenca) throws SQLException{
-		med.insereDoenca(doenca);
+	public void insereMedicacaoParaDoenca(Doencas doenca,Medicamentos medicacao) throws SQLException{
+		med.insereMedicacaoParaDoenca(doenca,medicacao);
 	}
 
 }
