@@ -69,6 +69,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 		Medicamentos med = null;
 		if(res.next()){
 			med = new Medicamentos();
+			med.setCod(res.getInt("cod"));
 			med.setNome(res.getString("nome"));
 			med.setPeso(res.getDouble("peso"));
 			med.setTipo(res.getString("tipo_medicamento"));
