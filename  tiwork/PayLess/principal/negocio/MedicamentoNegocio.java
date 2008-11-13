@@ -56,5 +56,8 @@ public class MedicamentoNegocio{
 		}
 		return med.trazer(nomeMedicamento);
 	}
+	public void insereDoenca(String doenca) throws SQLException{
+		med.insereDoenca(doenca);
+	}
 
 }

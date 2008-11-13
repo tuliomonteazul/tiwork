@@ -41,7 +41,7 @@ public class CadastrarDoencaMethod implements Method {
 			}
 			doenca.setMedicamentos(medicamentos);
 			
-//			negocio.
+//			negocio.tr
 		
 		
 		} catch (ClassNotFoundException e) {

@@ -107,5 +107,10 @@ public class MedicamentoHsql implements MedicamentosDao {
 		}
 		return aux;
 	}
-
+	@Override
+	public void insereDoenca(String doenca) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
