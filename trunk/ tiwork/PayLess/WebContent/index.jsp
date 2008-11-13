@@ -44,7 +44,7 @@
 				<td>Senha:</td><td><input type='password' name='senha'/></td>
 			</tr>	
 			<tr>
-				<td></td><td><input type='submit' value='OK' size="200"/></td>
+				<td></td><td><input type='submit' value='OK'/></td>
 			</tr>
 		</table>
 
