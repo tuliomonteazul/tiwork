@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import beans.Doencas;
 import beans.Medicamentos;
 import beans.Remedio;
 
@@ -107,9 +108,12 @@ public class MedicamentoHsql implements MedicamentosDao {
 		}
 		return aux;
 	}
-	@Override
-	public void insereDoenca(String doenca) throws SQLException {
-		// TODO Auto-generated method stub
+	
+	public void insereMedicacaoParaDoenca(Doencas doenca,Medicamentos medicacao) throws SQLException {
+		stat = query.getPrepared(con,"MedicamentoDoenca.inserir");
+		stat.setInt(1, doenca.getCod());
+		stat.setInt(2,medicacao.getCod());
+		stat.execute();
 		
 	}
 	

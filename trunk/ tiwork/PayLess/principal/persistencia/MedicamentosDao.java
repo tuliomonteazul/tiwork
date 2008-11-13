@@ -15,5 +15,5 @@ public interface MedicamentosDao {
  List<Remedio> listarRemediosPorData(Date dataInicio,Date dataFim)throws SQLException;
  List<Medicamentos> trazerPorSintoma(String sintomas ) throws SQLException;
  List<String> listarMedidas() throws SQLException;
- void insereDoenca(String doenca) throws SQLException;
+ void insereMedicacaoParaDoenca(Doencas doenca,Medicamentos medicacao) throws SQLException;
 }
