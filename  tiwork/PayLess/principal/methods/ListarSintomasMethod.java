@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.DoencaNegocio;
+import negocio.MedicamentoNegocio;
 
-public class ListarSintomas implements Method {
+public class ListarSintomasMethod implements Method {
 
 	@Override
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
 			DoencaNegocio doenca = new DoencaNegocio();
+			MedicamentoNegocio med = new MedicamentoNegocio();
+			req.setAttribute("medicamentos", med.listar());
 			req.setAttribute("sintomas", doenca.listarSintomas());
-			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeMedicamento.jsp");
+			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
 			dis.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

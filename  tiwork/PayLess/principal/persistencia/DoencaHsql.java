@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Doencas;
+import beans.Medicamentos;
 
 public class DoencaHsql implements DoencaDao {
 	private PreparedStatement stat;
@@ -26,7 +27,9 @@ public class DoencaHsql implements DoencaDao {
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException {
 		stat = query.getPrepared(conn,"Cadastrar.doenca" );
-		stat.setString(0,doenca.getNome());
+		stat.setString(1,doenca.getNome());
+		List<String> sintomas = doenca.getSintomas();
+		List<Medicamentos>medicamentos = doenca.getMedicamentos();
 		stat.execute();
 	}
 
@@ -59,6 +62,12 @@ public class DoencaHsql implements DoencaDao {
 		
 	}
 	return sintomas;
+	}
+
+	@Override
+	public Doencas trazerDoenca(String nome) throws SQLException {
+		stat = query.getPrepared(conn, queryName)
+		return null;
 	}
 
 }

@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import negocio.DoencaNegocio;
+
 import beans.Doencas;
 import beans.Medicamentos;
 
@@ -21,10 +23,9 @@ public class CadastrarDoencaMethod implements Method {
 			throws ServletException, IOException {
 		try {
 			Facade fachada = Facade.getInstance();
+			DoencaNegocio negocio =  new DoencaNegocio();
 			Doencas doenca =  new Doencas();
-			
-			doenca.setNome(req.getParameter("nome"));
-			
+			doenca.setNome(req.getParameter("descricao"));
 			List<String> sintomas = new ArrayList<String>();
 			
 			for(String s:req.getParameterValues("sintomas")){
@@ -40,7 +41,7 @@ public class CadastrarDoencaMethod implements Method {
 			}
 			doenca.setMedicamentos(medicamentos);
 			
-		
+//			negocio.
 		
 		
 		} catch (ClassNotFoundException e) {
