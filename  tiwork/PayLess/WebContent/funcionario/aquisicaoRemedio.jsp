@@ -26,6 +26,19 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
+	function validarCampos() {
+		var qtd = document.forms[0].quantidade.value;
+		var mensagem = document.getElementById('msg');
+		var msg = mensagem.innerHTML;
+		msg = "";
+		if (qtd<0){
+			msg = msg+'* O campo Quantidade deve ser positivo<br>';
+		}
+		mensagem.innerHTML = msg;
+		if(msg.length<1){
+			document.forms[0].submit();
+		}
+	}
 </script>
 </head>
 <body onload="VerificarMsg()">
@@ -55,7 +68,7 @@
 				<td>Valor Unitário:</td><td><input type='text' name='valor'/></td>
 			</tr>
 			<tr><td>
-			<input type='submit' value='Inserir'/>
+			<input type='button' value='Inserir' onclick="validarCampos();"/>
 			</td></tr>
 		</table>
 
