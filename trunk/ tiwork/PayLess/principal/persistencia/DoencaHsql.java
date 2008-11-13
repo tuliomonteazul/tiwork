@@ -24,13 +24,28 @@ public class DoencaHsql implements DoencaDao {
 		conn = hs.getConnection();
 		query = QueryManager.getInstance();
 	}
+	private int trazerSintomaCod(String sintoma) throws SQLException{
+		stat = query.getPrepared(conn, "Sintomas.trazer");
+		stat.setString(1,sintoma);
+		res = stat.executeQuery();
+		return res.getInt("cod");
+	}
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException {
 		stat = query.getPrepared(conn,"Cadastrar.doenca" );
 		stat.setString(1,doenca.getNome());
 		List<String> sintomas = doenca.getSintomas();
 		List<Medicamentos>medicamentos = doenca.getMedicamentos();
+		stat.executeUpdate();
+		Doencas aux = trazerDoenca(doenca.getNome());
+	
+			
+	}
+	public void insereSintoma(String sintoma) throws SQLException{
+		stat = query.getPrepared(conn, "SintomasDoenca.inserir");
+		stat.setInt(1,trazerSintomaCod(sintoma));
 		stat.execute();
+		
 	}
 
 	public List<Doencas> listar()throws SQLException {
@@ -66,8 +81,16 @@ public class DoencaHsql implements DoencaDao {
 
 	@Override
 	public Doencas trazerDoenca(String nome) throws SQLException {
-		stat = query.getPrepared(conn, queryName)
-		return null;
+		stat = query.getPrepared(conn, "Doenca.Trazer");
+		stat.setString(1, nome);
+		res = stat.executeQuery();
+		Doencas doenca = null;
+		if(res.next()){
+			doenca = new Doencas();
+			doenca.setCod(res.getInt("cod"));
+			doenca.setNome(res.getString("descricao"));
+		}
+		return doenca;
 	}
 
 }

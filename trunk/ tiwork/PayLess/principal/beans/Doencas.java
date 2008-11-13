@@ -7,6 +7,13 @@ public class Doencas {
 	private List<Medicamentos> medicamentos;
 	private String nome;
 	private List<String> sintomas;
+	private int cod;
+	public int getCod() {
+		return cod;
+	}
+	public void setCod(int cod) {
+		this.cod = cod;
+	}
 	public List<Medicamentos> getMedicamentos() {
 		return medicamentos;
 	}
