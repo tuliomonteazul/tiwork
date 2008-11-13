@@ -49,4 +49,16 @@ public class DoencaHsql implements DoencaDao {
 		return doencas;
 	}
 
+	@Override
+	public List<String> listarSintomas() throws SQLException {
+	stat = query.getPrepared(conn,"Sintomas.Listar");
+	res = stat.executeQuery();
+	List<String> sintomas = new ArrayList<String>();
+	while(res.next()){
+		sintomas.add(res.getString("DESCRICAO"));
+		
+	}
+	return sintomas;
+	}
+
 }

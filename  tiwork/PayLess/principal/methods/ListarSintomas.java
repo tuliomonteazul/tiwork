@@ -8,19 +8,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import negocio.MedicamentoNegocio;
+import negocio.DoencaNegocio;
 
-public class ListarReferenciaMethod implements Method {
+public class ListarSintomas implements Method {
 
 	@Override
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			MedicamentoNegocio med = new MedicamentoNegocio();
-			req.setAttribute("medidas", med.listarMedidas());
-			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarMedicamento.jsp");
+			DoencaNegocio doenca = new DoencaNegocio();
+			req.setAttribute("sintomas", doenca.listarSintomas());
+			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeMedicamento.jsp");
 			dis.forward(req, resp);
-			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
