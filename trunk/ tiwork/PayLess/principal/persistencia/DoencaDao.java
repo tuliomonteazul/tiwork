@@ -9,5 +9,5 @@ public interface DoencaDao {
  void cadastrarDoenca(Doencas doenca)throws SQLException;
  List<Doencas> listar()throws SQLException;
  List<Doencas>  trazerPorSintoma(String sintomas)throws SQLException;
- 
+ List<String> listarSintomas()throws SQLException;
 }
