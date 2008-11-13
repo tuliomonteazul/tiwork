@@ -25,4 +25,8 @@ public class DoencaNegocio {
 	public List<String> listarSintomas() throws SQLException{
 		return dao.listarSintomas();
 	}
+	
+	public void cadastrarDoenca(Doencas doenca) throws SQLException{
+		dao.cadastrarDoenca(doenca);
+	}
 }
