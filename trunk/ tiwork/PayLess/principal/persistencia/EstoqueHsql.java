@@ -53,7 +53,26 @@ public class EstoqueHsql implements EstoqueDao {
 		res = stat.executeQuery();
 		List<Estoque> estoques = new ArrayList<Estoque>();
 		while(res.next()){
-			estoques.add(new Estoque(res.getInt("cod"), res.getInt("quantidade"), res.getDouble("valor")));
+			estoques.add(new Estoque(res.getInt("cod"), res.getString("nome"), res.getInt("quantidade"), res.getDouble("valor")));
+		}
+		return estoques;
+	}
+	
+	/*
+	 * Metódo para retornar uma List com o cod dos objetos de Estoque sem repetição junto com seu nome vindo da tabela Medicamentos
+	 *
+	 * @throws SQLException
+	*/
+	public List<Estoque> listarEstoquesDistinct() throws SQLException {
+		stat = query.getPrepared(con, "Estoque.ListarDistinct");
+		res = stat.executeQuery();
+		List<Estoque> estoques = new ArrayList<Estoque>();
+		Estoque estoque;
+		while(res.next()){
+			estoque = new Estoque();
+			estoque.setCod(res.getInt("cod"));
+			estoque.setNome(res.getString("nome"));
+			estoques.add(estoque);
 		}
 		return estoques;
 	}
