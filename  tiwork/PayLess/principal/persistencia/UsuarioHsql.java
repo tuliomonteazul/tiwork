@@ -50,6 +50,7 @@ public class UsuarioHsql implements UsuarioDao {
 		Usuario usuario = null;
 		if(res.next()){
 			usuario = new Usuario();
+			usuario.setCod(res.getInt("id"));
 			usuario.setNome(res.getString("nome"));
 			usuario.setSenha(res.getString("senha"));
 			usuario.setLogin(res.getString("login"));
@@ -73,6 +74,7 @@ public class UsuarioHsql implements UsuarioDao {
 		Usuario usuario = null;
 		if(res.next()){
 			usuario = new Usuario();
+			usuario.setCod(res.getInt("id"));
 			usuario.setNome(res.getString("nome"));
 			usuario.setSenha(res.getString("senha"));
 			usuario.setLogin(res.getString("login"));
@@ -96,6 +98,7 @@ public class UsuarioHsql implements UsuarioDao {
 		Usuario usuario = null;
 		if(res.next()){
 			usuario = new Usuario();
+			usuario.setCod(res.getInt("id"));
 			usuario.setNome(res.getString("nome"));
 			usuario.setSenha(res.getString("senha"));
 			usuario.setLogin(res.getString("login"));
