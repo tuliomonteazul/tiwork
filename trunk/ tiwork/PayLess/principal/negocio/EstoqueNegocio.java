@@ -36,6 +36,17 @@ public class EstoqueNegocio{
 		List<Estoque> estoques = estoqueDao.listarEstoques();
 		return estoques;
 	}
+	
+	/*
+	 * Metódo para retornar uma List com o cod dos objetos de Estoque sem repetição junto com seu nome vindo da tabela Medicamentos
+	 *
+	 * @throws SQLException
+	*/
+	public List<Estoque> listarEstoquesDistinct()
+			throws SQLException {
+		List<Estoque> estoques = estoqueDao.listarEstoquesDistinct();
+		return estoques;
+	}
 
 
 }
