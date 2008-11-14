@@ -3,8 +3,22 @@ package beans;
 public class Estoque {
 	private int cod, quantidade;
 	private double valor;
+	private String nome;
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public Estoque() {
 		super();
+	}
+	public Estoque(int cod, String nome, int quantidade, double valor) {
+		super();
+		this.nome = nome;
+		this.cod = cod;
+		this.quantidade = quantidade;
+		this.valor = valor;
 	}
 	public Estoque(int cod, int quantidade, double valor) {
 		super();
