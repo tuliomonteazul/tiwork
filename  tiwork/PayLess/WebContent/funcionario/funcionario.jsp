@@ -38,7 +38,7 @@
 		<table>
 			<tr><td><a href="/PayLess/funcionario/cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
 			<tr><td><a href="/PayLess/Controller?method=AquisicaoRemedioListar">Aquisição de Remédio</a></td></tr>
-			<tr><td><a href="/PayLess/funcionario/efetuarVenda.jsp">Efetuar Venda de Remédio</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=EfetuarVendaListar">Efetuar Venda de Remédio</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/buscarRemedio.jsp">Buscar Rémedio por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/visualizarVendas.jsp">Visualizar Detalhes de Vendas</a></td></tr>
 		</table>
