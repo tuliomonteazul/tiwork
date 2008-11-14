@@ -26,6 +26,7 @@ public class EfetuarVendaInserirMethod implements Method{
 		List<Estoque> carrinho = null;
 		List<Estoque> estoques = null;
 		EstoqueNegocio estoqueNegocio = null;
+		Estoque estoque = null;
 		VendaNegocio vendaNegocio = null;
 		HttpSession sessao = null;
 		int codigo = 0;
@@ -39,22 +40,47 @@ public class EfetuarVendaInserirMethod implements Method{
 			vendaNegocio = new VendaNegocio();
 			sessao = req.getSession();
 			String login = (String) sessao.getAttribute("login");
-			usuario = usuarioNegocio.trazerFuncionario(login);
-			codFuncionario = usuario.getCod();
-			carrinho = (List<Estoque>) sessao.getAttribute("carrinho");
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/funcionario.jsp");;
-			codigo = vendaNegocio.obterCodigo();
-			estoques = estoqueNegocio.listarEstoquesDistinct();
-			for (Estoque e : carrinho){
-				venda = new Venda();
-				venda.setCodFuncionario(codFuncionario);
-				venda.setCodRemedio(e.getCod());
-				venda.setCodVenda(codigo);
-				venda.setQuantidade(e.getQuantidade());
-				venda.setValor(e.getValor());
-				vendaNegocio.inserirVenda(venda);
+			if (login != null){
+				usuario = usuarioNegocio.trazerFuncionario(login);
+				codFuncionario = usuario.getCod();
+				carrinho = (List<Estoque>) sessao.getAttribute("carrinho");
+				codigo = vendaNegocio.obterCodigo();
+				estoques = estoqueNegocio.listarEstoquesDistinct();
+				estoque = new Estoque();
+				boolean estoqueSuficiente = true;
+				for (Estoque e : carrinho){
+					estoque = estoqueNegocio.trazerEstoque(e.getCod());
+					venda = new Venda();
+					venda.setCodFuncionario(codFuncionario);
+					venda.setCodRemedio(e.getCod());
+					venda.setCodVenda(codigo);
+					venda.setQuantidade(e.getQuantidade());
+					venda.setValor(e.getValor());
+					if (e.getQuantidade()>estoque.getQuantidade()){
+						req.setAttribute("erro", "ERRO - Quantidade em estoque insuficiente.");
+						estoqueSuficiente = false;
+					}
+				}
+				if (estoqueSuficiente){
+					for (Estoque e : carrinho){
+						estoque = estoqueNegocio.trazerEstoque(e.getCod());
+						venda = new Venda();
+						venda.setCodFuncionario(codFuncionario);
+						venda.setCodRemedio(e.getCod());
+						venda.setCodVenda(codigo);
+						venda.setQuantidade(e.getQuantidade());
+						venda.setValor(e.getValor());
+						vendaNegocio.inserirVenda(venda);
+						int qtd = estoque.getQuantidade();
+						estoqueNegocio.alterarQuantidade(e.getCod(), qtd-e.getQuantidade());
+						req.setAttribute("msg", "Venda efetuada com sucesso!");
+					}
+				}
+				sessao.removeAttribute("carrinho");
+			}else{
+				req.setAttribute("erro", "ERRO - Você deve estar logado para efetuar uma venda.");
 			}
-			req.setAttribute("msg", "Venda efetuada com sucesso!");
 			req.setAttribute("estoques", estoques);
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
