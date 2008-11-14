@@ -5,7 +5,7 @@ public class Usuario {
 	private String nome;
 	private String login;
 	private String senha;
-	private int papel; //(1 = Funcionario - 2 = Farmaceutico)
+	private int papel, cod; //(1 = Funcionario - 2 = Farmaceutico)
 	
 	public String getLogin() {
 		return login;
@@ -37,6 +37,14 @@ public class Usuario {
 
 	public void setPapel(int papel) {
 		this.papel = papel;
+	}
+
+	public int getCod() {
+		return cod;
+	}
+
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 
 }
