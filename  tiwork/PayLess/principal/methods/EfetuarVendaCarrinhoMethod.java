@@ -64,7 +64,6 @@ public class EfetuarVendaCarrinhoMethod implements Method{
 			}
 			req.setAttribute("estoques", estoquesDistinct);
 			sessao.setAttribute("carrinho", carrinho);
-			//req.setAttribute("msg", "Remédio "+estoque.getNome()+" adicionado ao carrinho.");
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

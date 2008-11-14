@@ -21,7 +21,6 @@ public class EfetuarVendaDetalhesMethod implements Method{
 			throws ServletException, IOException {
 		
 		Estoque estoque = null;
-		List<Estoque> estoquesDistinct = null;
 		List<Estoque> estoques = null;
 		EstoqueNegocio estoqueNegocio = null;
 		String nome = req.getParameter("remedio");
@@ -29,9 +28,8 @@ public class EfetuarVendaDetalhesMethod implements Method{
 		try {
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/efetuarVenda.jsp");;
 			estoqueNegocio = new EstoqueNegocio();
-			estoquesDistinct = estoqueNegocio.listarEstoquesDistinct();
 			estoques = estoqueNegocio.listarEstoques();
-			for (Estoque e : estoquesDistinct){
+			for (Estoque e : estoques){
 				if (e.getNome().equalsIgnoreCase(nome)){
 					estoque = e;
 				}
@@ -43,18 +41,11 @@ public class EfetuarVendaDetalhesMethod implements Method{
 						estoque.setValor(e.getValor());
 					}
 				}
-				for (Estoque ed : estoquesDistinct){
-					for (Estoque e : estoques){
-						if (ed.getCod() == e.getCod()){
-							ed.setQuantidade(ed.getQuantidade()+e.getQuantidade());
-						}
-					}
-				}
 				req.setAttribute("estoque", estoque);
 			}else{
 				req.setAttribute("erro", "ERRO - Nome do remédio inválido.");
 			}
-			req.setAttribute("estoques", estoquesDistinct);
+			req.setAttribute("estoques", estoques);
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

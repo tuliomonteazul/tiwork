@@ -2,6 +2,7 @@ package methods;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ public class AquisicaoRemedioInserirMethod implements Method{
 		Medicamentos medicamentos = null;
 		MedicamentoNegocio medicamentoNegocio = null;
 		EstoqueNegocio estoqueNegocio = null;
+		ArrayList<Estoque> estoques = null;
 		
 		try {
 			String nomeMedicamento = req.getParameter("medicamento");
@@ -30,8 +32,19 @@ public class AquisicaoRemedioInserirMethod implements Method{
 			estoqueNegocio = new EstoqueNegocio();
 			medicamentoNegocio = new MedicamentoNegocio();
 			medicamentos = medicamentoNegocio.trazer(nomeMedicamento);
-			estoqueNegocio.inserirEstoque(new Estoque(medicamentos.getCod(), quantidade, valor));
-			req.setAttribute("msg", "Medicamento "+nomeMedicamento+" adicionado ao estoque");
+			estoques = (ArrayList<Estoque>) estoqueNegocio.listarEstoques();
+			boolean controle = false;
+			for (Estoque e : estoques){
+				if (medicamentos.getCod() == e.getCod()){
+					controle = true;
+				}
+			}
+			if (controle){
+				estoqueNegocio.alterarQuantidade(medicamentos.getCod(), medicamentos.getQuantidade());
+			}else{
+				estoqueNegocio.inserirEstoque(new Estoque(medicamentos.getCod(), quantidade, valor));
+			}
+			req.setAttribute("msg", "Adicionado(s) "+quantidade+" medicamento(s) do tipo "+nomeMedicamento+" ao estoque");
 		} catch (ClassNotFoundException e) {
 			req.setAttribute("erro", "Não foi possível adicionar o medicamento ao estoque");
 			e.printStackTrace();
