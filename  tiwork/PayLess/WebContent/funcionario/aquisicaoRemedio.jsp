@@ -28,7 +28,7 @@
 	}
 	function validarCampos() {
 		var qtd = document.forms[0].quantidade.value;
-		var mensagem = document.getElementById('msg');
+		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
 		if (qtd<0){
