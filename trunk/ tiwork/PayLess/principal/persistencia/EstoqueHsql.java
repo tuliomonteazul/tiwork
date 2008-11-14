@@ -78,4 +78,41 @@ public class EstoqueHsql implements EstoqueDao {
 	}
 
 
+	/*
+	 * Metódo alterar a quantidade de um estoque
+	 *
+	 * @param int
+	 * @param int
+	 * @throws SQLException
+	*/
+	public void alterarQuantidade(int cod, int quantidade) throws SQLException {
+		stat = query.getPrepared(con,"Estoque.Alterar.Quantidade" );
+		stat.setInt(1, quantidade);
+		stat.setInt(2, cod);
+		stat.execute();
+	}
+
+
+	/*
+	 * Metódo retornar um estoque pelo seu codigo
+	 *
+	 * @param int
+	 * @return Estoque
+	 * @throws SQLException
+	*/
+	public Estoque trazerEstoque(int cod) throws SQLException {
+		stat = query.getPrepared(con, "Estoque.Trazer");
+		stat.setInt(1, cod);
+		res = stat.executeQuery();
+		Estoque estoque = new Estoque();;
+		while(res.next()){
+			estoque.setCod(res.getInt("cod"));
+			estoque.setNome(res.getString("nome"));
+			estoque.setValor(res.getDouble("valor"));
+			estoque.setQuantidade(res.getInt("quantidade"));
+		}
+		return estoque;
+	}
+
+
 }
