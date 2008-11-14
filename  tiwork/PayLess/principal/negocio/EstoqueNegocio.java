@@ -47,6 +47,30 @@ public class EstoqueNegocio{
 		List<Estoque> estoques = estoqueDao.listarEstoquesDistinct();
 		return estoques;
 	}
+	
+	
+	/*
+	 * Metódo alterar a quantidade de um estoque
+	 *
+	 * @param int
+	 * @param int
+	 * @throws SQLException
+	*/
+	public void alterarQuantidade(int cod, int quantidade) throws SQLException {
+		estoqueDao.alterarQuantidade(cod, quantidade);
+	}
+	
+	/*
+	 * Metódo retornar um estoque pelo seu codigo
+	 *
+	 * @param int
+	 * @return Estoque
+	 * @throws SQLException
+	*/
+	public Estoque trazerEstoque(int cod) throws SQLException {
+		Estoque estoque = estoqueDao.trazerEstoque(cod);
+		return estoque;
+	}
 
 
 }
