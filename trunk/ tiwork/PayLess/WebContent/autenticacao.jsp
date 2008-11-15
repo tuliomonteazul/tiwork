@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Hotel California</title>
+<title>Pay Less</title>
 <link rel=stylesheet href="padrao.css" type="text/css">
 <script type="text/javascript">
 	function VerificarMsg() {
