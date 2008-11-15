@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel=stylesheet href="padrao.css" type="text/css">
 </head>
 <body>
 <form action="Controller?method=CadastrarDoenca" method="post">
