@@ -110,10 +110,13 @@ public class MedicamentoHsql implements MedicamentosDao {
 	}
 	
 	public void insereMedicacaoParaDoenca(Doencas doenca,Medicamentos medicacao) throws SQLException {
+		int doencaCod = doenca.getCod();
+		int medicamentoCod = medicacao.getCod();
 		stat = query.getPrepared(con,"MedicamentoDoenca.inserir");
-		stat.setInt(1, doenca.getCod());
-		stat.setInt(2,medicacao.getCod());
-		stat.executeUpdate();
+		System.out.println(stat);
+		stat.setInt(1,medicamentoCod);
+		stat.setInt(2, doencaCod);
+		stat.execute();
 		
 	}
 	
