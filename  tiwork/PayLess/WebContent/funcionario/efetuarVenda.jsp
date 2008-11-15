@@ -110,7 +110,7 @@
 				</tr>
 				<c:forEach var="c" items="${sessionScope.carrinho}">
 					<tr>
-						<td>${c.nome}</td><td>${c.valor}</td><td>${c.quantidade}</td><td>Excluir</td>
+						<td>${c.nome}</td><td>${c.valor}</td><td>${c.quantidade}</td><td><a href="Controller?method=EfetuarVendaCarrinhoExcluirItem&item=${c.nome}">Excluir</a></td>
 					</tr>
 				</c:forEach>
 				<tr>
