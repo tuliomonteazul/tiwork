@@ -11,7 +11,7 @@
 <table width="300" align="center">
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
-	<form action="Controller?method=CadastrarUsuario" method='post'>
+	<form action="/PayLess/Controller?method=CadastrarUsuario" method='post'>
 		<table>
 			<tr>
 				<td>Nome:</td><td><input type='text' name='nome'/></td>
