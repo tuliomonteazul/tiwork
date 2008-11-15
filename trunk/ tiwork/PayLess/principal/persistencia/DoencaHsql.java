@@ -58,13 +58,18 @@ public class DoencaHsql implements DoencaDao {
 
 	public List<Doencas> trazerPorSintoma(String sintomas) throws SQLException{
 		stat = query.getPrepared(conn, "Sintomas.Doenca.Trazer");
-		stat.setString(0,sintomas);
+		stat.setString(1,sintomas);
 		res = stat.executeQuery();
 		List<Doencas>doencas = new ArrayList<Doencas>();
 		Doencas aux;
 		while(res.next()){
 			aux = new Doencas();
 			aux.setNome(res.getString("DESCRICAO"));
+			aux.setCod(res.getInt("COD"));
+			stat = query.getPrepared(conn,"SintomasDoenca.trazerPorCodDoenca");
+			stat.setInt(1, aux.getCod());
+			
+			
 			doencas.add(aux);
 		}
 		return doencas;

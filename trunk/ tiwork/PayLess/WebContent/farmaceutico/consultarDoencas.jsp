@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form method="get" action="ListarDoencaPorSintomas">
 	<table>
 		<tr>
 			<td>Sintomas: 
