@@ -31,7 +31,7 @@ public class VisualizarVendasMethod implements Method{
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
 			String dc1 = req.getParameter("dc1");
 			String dc2 = req.getParameter("dc2");
-			if (dc1.equals("")&&dc2.equals("")){
+			if ("".equals(dc1)&&"".equals(dc2)){
 				//TODO: listar por nome de remedio
 			}else{
 				dataInicio = Venda.dataStringToDate(dc1);

@@ -35,6 +35,9 @@
 	<c:url value="Controller" var="sintomas">  
 		<c:param name="method" value="ListarSintomas"/>
 	</c:url>
+	<c:url value="Controller" var="sintoma">  
+		<c:param name="method" value="ListarSintoma"/>
+	</c:url>
 <table width="300" align="center">
 	<tr><td align="center">
 		<font face="tahoma" size="2">
@@ -45,7 +48,7 @@
 		<table>
 			<tr><td><a href="${listar}">Cadastrar Medicamento</a></td></tr>
 			<tr><td><a href="${sintomas}">Cadastrar Tipo de Doenças</a></td></tr>
-			<tr><td><a href="/PayLess/farmaceutico/cadastrarSintomas.jsp">Cadastrar Sintomas</a></td></tr>
+			<tr><td><a href="${sintoma}">Consultar Doenças Por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/farmaceutico/cadastrarMedicacao.jsp">Cadastrar Medicação</a></td></tr>
 			<tr><td><a href="/PayLess/farmaceutico/visualizarRemedios.jsp">Visualizar Remédios</a></td></tr>
 		</table>
