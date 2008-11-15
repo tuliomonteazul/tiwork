@@ -29,7 +29,7 @@
 </script>
 </head>
 <body onload="VerificarMsg()">
-<table width="300" align="center">
+<table width="500" align="center">
 	<tr><td align="center">
 		<font face="tahoma" size="2">
 		<div id="msg"></div>
@@ -53,11 +53,11 @@
 		<table align="center">
 			<tr>
 				<td>Data Início:</td>
-				<td><input class="plain" name="dc1" value="" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
+				<td><input class="plain" name="dc1" value="${dataInicio}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
 				<td>Data Fim:</td>
-				<td><input class="plain" name="dc2" value="" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
+				<td><input class="plain" name="dc2" value="${dataFim}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type='submit' value='Buscar'/></td>
@@ -68,7 +68,7 @@
 	</fieldset>
 
 	<c:if test="${!empty requestScope.vendas}">
-		<fieldset><legend>Vendas</legend>
+		<fieldset><legend>Lista de Vendas</legend>
 			<table align="center">
 				<tr>
 					<td>Código da Venda</td><td>Código do Funcionário</td><td>Código do Remédio</td><td>Quantidade</td><td>Valor</td><td>Data</td>
@@ -78,9 +78,6 @@
 						<td>${v.codVenda}</td><td>${v.codFuncionario}</td><td>${v.codRemedio}</td><td>${v.quantidade}</td><td>${v.valor}</td><td>${v.data}</td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td colspan="2"><input type='submit' value='Efetuar Venda'/></td>
-				</tr>
 			</table>
 	
 		</fieldset>
@@ -92,7 +89,7 @@
 	</font></td></tr>
 </table>
 
-<iframe width=132 height=142 name="gToday:contrast:agenda.js" id="gToday:contrast:agenda.js" src="DateRange/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
+<iframe width=132 height=142 name="gToday:contrast:agenda.js" id="gToday:contrast:agenda.js" src="/PayLess/funcionario/DateRange/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
 </iframe>
 
 </body>
