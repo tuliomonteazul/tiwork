@@ -29,22 +29,24 @@ public class DoencaHsql implements DoencaDao {
 		stat.setString(1,sintoma);
 		res = stat.executeQuery();
 		if(res.next()){
+			System.out.println(res.getInt("COD"));
 		return res.getInt("COD");
 		}
-		return -1;
+		throw new SQLException();
 	}
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException {
 		stat = query.getPrepared(conn,"Doenca.Cadastrar" );
 		stat.setString(1,doenca.getNome());
 		stat.execute();
+		
 	}
 	public void insereSintoma(String doenca,String sintoma) throws SQLException{
+		int doencas =  trazerDoenca(doenca).getCod();
+		int sintomas = trazerSintomaCod(sintoma);
 		stat = query.getPrepared(conn, "SintomasDoenca.inserir");
-		System.out.println(stat);
-		stat.setInt(1, trazerDoenca(doenca).getCod());
-		System.out.println(trazerSintomaCod(sintoma));
-		stat.setInt(2,trazerSintomaCod(sintoma));
+		stat.setInt(1,doencas);
+		stat.setInt(2,sintomas);
 		stat.execute();
 		
 	}
