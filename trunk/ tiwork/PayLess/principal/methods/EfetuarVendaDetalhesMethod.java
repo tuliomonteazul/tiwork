@@ -28,7 +28,7 @@ public class EfetuarVendaDetalhesMethod implements Method{
 		try {
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/efetuarVenda.jsp");;
 			estoqueNegocio = new EstoqueNegocio();
-			estoques = estoqueNegocio.listarEstoques();
+			estoques = estoqueNegocio.listarEstoquesDistinct();
 			for (Estoque e : estoques){
 				if (e.getNome().equalsIgnoreCase(nome)){
 					estoque = e;

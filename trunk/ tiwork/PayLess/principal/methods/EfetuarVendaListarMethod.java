@@ -27,7 +27,12 @@ public class EfetuarVendaListarMethod implements Method{
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/efetuarVenda.jsp");;
 			estoqueNegocio = new EstoqueNegocio();
 			estoques = estoqueNegocio.listarEstoquesDistinct();
-			req.setAttribute("estoques", estoques);
+			if (estoques.size()==0){
+				req.setAttribute("erro", "ERRO - Não há produtos no estoque");
+				d = req.getRequestDispatcher("funcionario/funcionario.jsp");;
+			}else {
+				req.setAttribute("estoques", estoques);
+			}
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

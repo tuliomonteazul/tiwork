@@ -72,7 +72,11 @@ public class EstoqueHsql implements EstoqueDao {
 			estoque = new Estoque();
 			estoque.setCod(res.getInt("cod"));
 			estoque.setNome(res.getString("nome"));
-			estoques.add(estoque);
+			estoque.setValor(res.getDouble("valor"));
+			estoque.setQuantidade(res.getInt("quantidade"));
+			if (res.getInt("quantidade") != 0){
+				estoques.add(estoque);
+			}
 		}
 		return estoques;
 	}

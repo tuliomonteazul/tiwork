@@ -28,6 +28,7 @@ public class AquisicaoRemedioInserirMethod implements Method{
 		try {
 			String nomeMedicamento = req.getParameter("medicamento");
 			int quantidade = Integer.parseInt(req.getParameter("quantidade"));
+			int quantidadeAux = 0;
 			Double valor = Double.parseDouble(req.getParameter("valor"));
 			estoqueNegocio = new EstoqueNegocio();
 			medicamentoNegocio = new MedicamentoNegocio();
@@ -37,10 +38,11 @@ public class AquisicaoRemedioInserirMethod implements Method{
 			for (Estoque e : estoques){
 				if (medicamentos.getCod() == e.getCod()){
 					controle = true;
+					quantidadeAux = e.getQuantidade()+quantidade;
 				}
 			}
 			if (controle){
-				estoqueNegocio.alterarQuantidade(medicamentos.getCod(), medicamentos.getQuantidade());
+				estoqueNegocio.alterarQuantidade(medicamentos.getCod(), quantidadeAux);
 			}else{
 				estoqueNegocio.inserirEstoque(new Estoque(medicamentos.getCod(), quantidade, valor));
 			}

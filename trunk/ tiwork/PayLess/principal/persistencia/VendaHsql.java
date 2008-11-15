@@ -3,13 +3,12 @@ package persistencia;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.Medicamentos;
-import beans.Usuario;
 import beans.Venda;
 
 public class VendaHsql implements VendaDao {
@@ -38,6 +37,7 @@ public class VendaHsql implements VendaDao {
 		stat.setInt(3, venda.getCodFuncionario());
 		stat.setInt(4, venda.getQuantidade());
 		stat.setDouble(5, venda.getValor());
+		stat.setDate(6, venda.getData());
 		stat.execute();
 	}
 	
@@ -67,6 +67,33 @@ public class VendaHsql implements VendaDao {
 	public ArrayList<Venda> listarVendas() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/*
+	 * Metódo para retornar uma lista com as vendas entre duas datas
+	 *
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorData(Date dataInicio, Date dataFim) throws SQLException {
+		stat = query.getPrepared(con, "Venda.Listar.Por.Data" );
+		stat.setDate(1, dataInicio);
+		stat.setDate(2, dataFim);
+		res = stat.executeQuery();
+		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		Venda venda = null;
+		if(res.next()){
+			//CODVENDA, CODREMEDIO, CODFUNCIONARIO, QUANTIDADE, VALOR, DATA
+			venda = new Venda();
+			venda.setCodVenda(res.getInt("codVenda"));
+			venda.setCodRemedio(res.getInt("codRemedio"));
+			venda.setCodFuncionario(res.getInt("codFuncionario"));
+			venda.setQuantidade(res.getInt("quantidade"));
+			venda.setValor(res.getDouble("valor"));
+			venda.setData(res.getDate("data"));
+			vendas.add(venda);
+		}
+		return vendas;
 	}
 
 

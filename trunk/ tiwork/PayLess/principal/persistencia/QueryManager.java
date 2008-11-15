@@ -23,7 +23,7 @@ public class QueryManager {
  
  public static QueryManager getInstance() throws FileNotFoundException, IOException{
 	 if(manager == null){
-		 manager = new QueryManager("C:\\Documents and Settings\\Ricardo\\workspace\\PayLess\\conexoes.applications");
+		 manager = new QueryManager("C:\\Tulio\\eclipseJEE\\workspace\\PayLess\\conexoes.applications");
 	 }
 	 return manager;
  }
