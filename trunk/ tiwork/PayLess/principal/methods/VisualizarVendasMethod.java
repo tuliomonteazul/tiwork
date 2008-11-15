@@ -31,9 +31,11 @@ public class VisualizarVendasMethod implements Method{
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
 			String dc1 = req.getParameter("dc1");
 			String dc2 = req.getParameter("dc2");
+			req.setAttribute("dataInicio", dc1);
+			req.setAttribute("dataFim", dc2);
 			if ("".equals(dc1)&&"".equals(dc2)){
-				//TODO: listar por nome de remedio
 			}else{
+				vendaNegocio = new VendaNegocio();
 				dataInicio = Venda.dataStringToDate(dc1);
 				dataFim = Venda.dataStringToDate(dc2);
 				vendas = vendaNegocio.listarVendaPorData(dataInicio, dataFim);
@@ -46,6 +48,12 @@ public class VisualizarVendasMethod implements Method{
 			d.forward(req, resp);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			d.forward(req, resp);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			d.forward(req, resp);
 		}
 	
 	}
