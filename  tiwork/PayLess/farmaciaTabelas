@@ -5,5 +5,5 @@ create table medicamentos(cod integer not null identity primary key,nome varchar
 create table sintomas(cod integer not null identity primary key,descricao varchar(30) not null)
 create table doenca(cod integer not null identity primary key,descricao varchar(60) not null)
 create table doenca_medicacao(cod_medicamento integer not null,cod_doenca integer not null,foreign key(cod_doenca) references doenca(cod),foreign key(cod_medicamento) references medicamentos(cod))
-create table doenca_sintomas(cod_doenca integer not null,cod_sintomas integer not null,foreign key(cod_doenca) references medicamentos(cod),foreign key(cod_sintomas) references sintomas(cod))
+create table doenca_sintomas(cod_doenca integer not null,cod_sintomas integer not null,foreign key(cod_doenca) references doenca(cod),foreign key(cod_sintomas) references sintomas(cod))
 
