@@ -2,8 +2,10 @@ package negocio;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import persistencia.VendaDao;
 import persistencia.VendaHsql;
@@ -39,6 +41,21 @@ public class VendaNegocio{
 	}
 	
 	/*
+	 * Metódo para retornar uma lista com as vendas entre duas datas
+	 *
+	 * @param java.sql.Date
+	 * @param java.sql.Date
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorData(Date dataInicio, Date dataFim) throws SQLException {
+		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		vendas = vendaoDao.listarVendaPorData(dataInicio, dataFim);
+		return vendas;
+	}
+	
+	
+	/*
 	 * Metódo para retornar o codigo a ser usado na proxima venda
 	 *
 	 * @return int
@@ -49,5 +66,6 @@ public class VendaNegocio{
 		int codigo = vendaoDao.obterCodigo();
 		return codigo;
 	}
+	
 
 }

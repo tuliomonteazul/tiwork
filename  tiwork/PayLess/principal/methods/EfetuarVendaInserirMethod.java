@@ -2,6 +2,8 @@ package methods;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -51,18 +53,13 @@ public class EfetuarVendaInserirMethod implements Method{
 				boolean estoqueSuficiente = true;
 				for (Estoque e : carrinho){
 					estoque = estoqueNegocio.trazerEstoque(e.getCod());
-					venda = new Venda();
-					venda.setCodFuncionario(codFuncionario);
-					venda.setCodRemedio(e.getCod());
-					venda.setCodVenda(codigo);
-					venda.setQuantidade(e.getQuantidade());
-					venda.setValor(e.getValor());
 					if (e.getQuantidade()>estoque.getQuantidade()){
 						req.setAttribute("erro", "ERRO - Quantidade em estoque insuficiente.");
 						estoqueSuficiente = false;
 					}
 				}
 				if (estoqueSuficiente){
+					GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
 					for (Estoque e : carrinho){
 						estoque = estoqueNegocio.trazerEstoque(e.getCod());
 						venda = new Venda();
@@ -70,7 +67,8 @@ public class EfetuarVendaInserirMethod implements Method{
 						venda.setCodRemedio(e.getCod());
 						venda.setCodVenda(codigo);
 						venda.setQuantidade(e.getQuantidade());
-						venda.setValor(e.getValor());
+						venda.setValor((e.getQuantidade()*e.getValor()));
+						venda.setData(new java.sql.Date(calendar.getTimeInMillis()));
 						vendaNegocio.inserirVenda(venda);
 						int qtd = estoque.getQuantidade();
 						estoqueNegocio.alterarQuantidade(e.getCod(), qtd-e.getQuantidade());

@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,4 +13,6 @@ public interface VendaDao {
 
 	ArrayList<Venda> listarVendas() throws SQLException;
 
+	ArrayList<Venda> listarVendaPorData (Date dataInicio, Date dataFim) throws SQLException;
+	
 }
