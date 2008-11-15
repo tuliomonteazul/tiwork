@@ -113,7 +113,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 		stat = query.getPrepared(con,"MedicamentoDoenca.inserir");
 		stat.setInt(1, doenca.getCod());
 		stat.setInt(2,medicacao.getCod());
-		stat.execute();
+		stat.executeUpdate();
 		
 	}
 	

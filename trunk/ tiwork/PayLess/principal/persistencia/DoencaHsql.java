@@ -28,22 +28,22 @@ public class DoencaHsql implements DoencaDao {
 		stat = query.getPrepared(conn, "Sintomas.trazer");
 		stat.setString(1,sintoma);
 		res = stat.executeQuery();
-		return res.getInt("cod");
+		if(res.next()){
+		return res.getInt("COD");
+		}
+		return -1;
 	}
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException {
-		stat = query.getPrepared(conn,"Cadastrar.doenca" );
+		stat = query.getPrepared(conn,"Doenca.Cadastrar" );
 		stat.setString(1,doenca.getNome());
-		List<String> sintomas = doenca.getSintomas();
-		List<Medicamentos>medicamentos = doenca.getMedicamentos();
-		stat.executeUpdate();
-		Doencas aux = trazerDoenca(doenca.getNome());
-	
-			
+		stat.execute();
 	}
 	public void insereSintoma(String doenca,String sintoma) throws SQLException{
 		stat = query.getPrepared(conn, "SintomasDoenca.inserir");
+		System.out.println(stat);
 		stat.setInt(1, trazerDoenca(doenca).getCod());
+		System.out.println(trazerSintomaCod(sintoma));
 		stat.setInt(2,trazerSintomaCod(sintoma));
 		stat.execute();
 		
@@ -55,7 +55,7 @@ public class DoencaHsql implements DoencaDao {
 	}
 
 	public List<Doencas> trazerPorSintoma(String sintomas) throws SQLException{
-		stat = query.getPrepared(conn, "Trazer.Doenca.Sintoma");
+		stat = query.getPrepared(conn, "Sintomas.Doenca.Trazer");
 		stat.setString(0,sintomas);
 		res = stat.executeQuery();
 		List<Doencas>doencas = new ArrayList<Doencas>();
