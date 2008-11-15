@@ -23,7 +23,7 @@ public class UsuarioHsql implements UsuarioDao {
 		con = source.getConnection();
 	}
 	public void cadastrarUsuario(Usuario usuario)throws SQLException{
-		stat = query.getPrepared(con, "Usuario.cadastrar");	
+		stat = query.getPrepared(con, "Usuario.Cadastrar");	
 		stat.setString(1, usuario.getNome());
 		stat.setString(2, usuario.getLogin());
 		stat.setString(3, usuario.getSenha());
