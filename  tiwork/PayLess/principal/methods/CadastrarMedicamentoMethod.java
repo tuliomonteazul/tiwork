@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fachada.Facade;
 
 import negocio.MedicamentoNegocio;
 
@@ -22,7 +21,7 @@ public class CadastrarMedicamentoMethod implements Method{
 		Medicamentos med = new Medicamentos();
 		
 		try {
-			Facade negocio = Facade.getInstance();
+			MedicamentoNegocio medicamento = new  MedicamentoNegocio();
 			if("drageas".equalsIgnoreCase(req.getParameter("tipo"))){
 				
 				med.setNome(req.getParameter("nome"));
@@ -39,7 +38,7 @@ public class CadastrarMedicamentoMethod implements Method{
 				med.setMedida(req.getParameter("medida"));
 					
 			}
-			negocio.cadastrarMedicamentos(med,req.getParameter("tipo"));
+			medicamento.cadastrarMedicamentos(med,req.getParameter("tipo"));
 				
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

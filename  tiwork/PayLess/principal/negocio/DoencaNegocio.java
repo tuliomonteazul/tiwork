@@ -18,10 +18,21 @@ public class DoencaNegocio {
 		dao = new  DoencaHsql();
 		med = new MedicamentoNegocio();
 	}
-	public List<Doencas> trazerPorSintomas(List<String> sintomas){
+	public List<Doencas> trazerPorSintomas(String [] sintomas) throws SQLException{
 		List<Doencas> doencas = new ArrayList<Doencas>();
-		
-		return null;
+		List<Doencas> d1;
+		for(String s:sintomas){
+			d1 = dao.trazerPorSintoma(s);
+			for(Doencas doenca:d1){
+				doencas.add(doenca);
+			}
+		}
+		for(Doencas doenca:doencas){
+			for(int i=0;i<sintomas.length;i++){
+				//if()
+			}
+		}
+		return doencas;
 		
 		
 	}

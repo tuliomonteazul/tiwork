@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.DoencaNegocio;
+import negocio.MedicamentoNegocio;
 
 import beans.Doencas;
 import beans.Medicamentos;
 
-import fachada.Facade;
 
 public class CadastrarDoencaMethod implements Method {
 
@@ -22,7 +22,8 @@ public class CadastrarDoencaMethod implements Method {
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			Facade fachada = Facade.getInstance();
+			//Facade fachada = Facade.getInstance();
+			MedicamentoNegocio med = new MedicamentoNegocio();
 			DoencaNegocio negocio =  new DoencaNegocio();
 			Doencas doenca =  new Doencas();
 			doenca.setNome(req.getParameter("descricao"));
@@ -37,7 +38,7 @@ public class CadastrarDoencaMethod implements Method {
 			List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
 			
 			for(String s:req.getParameterValues("medicamentos")){
-				medicamentos.add(fachada.trazerMedicamento(s));
+				medicamentos.add(med.trazer(s));
 			}
 			doenca.setMedicamentos(medicamentos);
 			
