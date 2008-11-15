@@ -82,8 +82,7 @@ public class VendaHsql implements VendaDao {
 		res = stat.executeQuery();
 		ArrayList<Venda> vendas = new ArrayList<Venda>();
 		Venda venda = null;
-		if(res.next()){
-			//CODVENDA, CODREMEDIO, CODFUNCIONARIO, QUANTIDADE, VALOR, DATA
+		while(res.next()){
 			venda = new Venda();
 			venda.setCodVenda(res.getInt("codVenda"));
 			venda.setCodRemedio(res.getInt("codRemedio"));
