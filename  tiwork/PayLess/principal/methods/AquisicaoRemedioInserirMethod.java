@@ -43,6 +43,7 @@ public class AquisicaoRemedioInserirMethod implements Method{
 			}
 			if (controle){
 				estoqueNegocio.alterarQuantidade(medicamentos.getCod(), quantidadeAux);
+				estoqueNegocio.alterarValor(medicamentos.getCod(), valor);
 			}else{
 				estoqueNegocio.inserirEstoque(new Estoque(medicamentos.getCod(), quantidade, valor));
 			}
