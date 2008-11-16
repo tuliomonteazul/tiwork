@@ -33,7 +33,7 @@ public class CadastrarUsuarioMethod implements Method {
 			e.printStackTrace();
 			req.setAttribute("erro", "Erro ao tentar cadastrar o usuario "+req.getParameter("nome"));
 		} finally {
-			RequestDispatcher d = req.getRequestDispatcher("funcionario/funcionario.jsp");
+			RequestDispatcher d = req.getRequestDispatcher("funcionario/cadastrarUsuario.jsp");
 			d.forward(req, resp);
 		}
 		
