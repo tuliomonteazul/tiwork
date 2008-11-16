@@ -49,7 +49,7 @@ public class VendaNegocio{
 	 * @throws SQLException
 	*/
 	public ArrayList<Venda> listarVendaPorData(Date dataInicio, Date dataFim) throws SQLException {
-		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		ArrayList<Venda> vendas = null;
 		vendas = vendaoDao.listarVendaPorData(dataInicio, dataFim);
 		return vendas;
 	}
@@ -66,6 +66,20 @@ public class VendaNegocio{
 		int codigo = vendaoDao.obterCodigo();
 		return codigo;
 	}
+	
+	/*
+	 * Metódo para retornar vendas de um codigoVenda
+	 *
+	 * @param int
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorCodigo(int codigo) throws SQLException {
+		ArrayList<Venda> vendas = null;
+		vendas = vendaoDao.listarVendaPorCodigo(codigo);
+		return vendas;
+	}
+
 	
 
 }
