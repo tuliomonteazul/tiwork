@@ -96,6 +96,19 @@ public class EstoqueHsql implements EstoqueDao {
 		stat.execute();
 	}
 
+	/*
+	 * Metódo alterar o valor de um estoque
+	 *
+	 * @param int
+	 * @param int
+	 * @throws SQLException
+	*/
+	public void alterarValor(int cod, double valor) throws SQLException {
+		stat = query.getPrepared(con,"Estoque.Alterar.Valor" );
+		stat.setDouble(1, valor);
+		stat.setInt(2, cod);
+		stat.execute();
+	}
 
 	/*
 	 * Metódo retornar um estoque pelo seu codigo
@@ -117,6 +130,7 @@ public class EstoqueHsql implements EstoqueDao {
 		}
 		return estoque;
 	}
+
 
 
 }

@@ -14,5 +14,7 @@ public interface UsuarioDao {
 	Usuario trazerFuncionario(String login) throws SQLException;
 	
 	Usuario trazerUsuario(String login) throws SQLException;
+	
+	Usuario trazerUsuarioPorCodigo(int codigo) throws SQLException;
 
 }
