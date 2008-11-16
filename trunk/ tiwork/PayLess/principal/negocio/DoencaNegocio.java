@@ -21,8 +21,8 @@ public class DoencaNegocio {
 	public List<Doencas> trazerPorSintomas(String [] sintomas) throws SQLException{
 		List<Doencas> doencas = new ArrayList<Doencas>();
 		List<Doencas> d1;
-		for(String s:sintomas){
-			d1 = dao.trazerPorSintoma(s);
+		for (int i=0;i<sintomas.length;i++){
+			d1 = dao.trazerPorSintoma(sintomas[i]);
 			for(Doencas doenca:d1){
 				doencas.add(doenca);
 			}
