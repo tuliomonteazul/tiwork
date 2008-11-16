@@ -61,6 +61,17 @@ public class EstoqueNegocio{
 	}
 	
 	/*
+	 * Metódo alterar o valor de um estoque
+	 *
+	 * @param int
+	 * @param int
+	 * @throws SQLException
+	*/
+	public void alterarValor(int cod, double valor) throws SQLException {
+		estoqueDao.alterarValor(cod, valor);
+	}
+	
+	/*
 	 * Metódo retornar um estoque pelo seu codigo
 	 *
 	 * @param int

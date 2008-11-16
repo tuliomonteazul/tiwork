@@ -67,5 +67,17 @@ public class UsuarioNegocio{
 		Usuario usuario = usuarioDao.trazerUsuario(login);
 		return usuario;
 	}
+	
+	/*
+	 * Metódo para retornar um usuario por seu codigo
+	 *
+	 * @param int
+	 * @return Usuario
+	*/
+	public Usuario trazerUsuarioPorCodigo(int cod)
+			throws SQLException {
+		Usuario usuario = usuarioDao.trazerUsuarioPorCodigo(cod);
+		return usuario;
+	}
 
 }
