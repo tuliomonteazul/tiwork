@@ -15,4 +15,6 @@ public interface VendaDao {
 
 	ArrayList<Venda> listarVendaPorData (Date dataInicio, Date dataFim) throws SQLException;
 	
+	ArrayList<Venda> listarVendaPorCodigo (int codigo) throws SQLException;
+	
 }

@@ -71,7 +71,9 @@ public class VendaHsql implements VendaDao {
 
 	/*
 	 * Metódo para retornar uma lista com as vendas entre duas datas
-	 *
+	 * 
+	 * @param Date
+	 * @param Date
 	 * @return ArrayList<Venda>
 	 * @throws SQLException
 	*/
@@ -79,6 +81,32 @@ public class VendaHsql implements VendaDao {
 		stat = query.getPrepared(con, "Venda.Listar.Por.Data" );
 		stat.setDate(1, dataInicio);
 		stat.setDate(2, dataFim);
+		res = stat.executeQuery();
+		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		Venda venda = null;
+		while(res.next()){
+			venda = new Venda();
+			venda.setCodVenda(res.getInt("codVenda"));
+			venda.setCodRemedio(res.getInt("codRemedio"));
+			venda.setCodFuncionario(res.getInt("codFuncionario"));
+			venda.setQuantidade(res.getInt("quantidade"));
+			venda.setValor(res.getDouble("valor"));
+			venda.setData(res.getDate("data"));
+			vendas.add(venda);
+		}
+		return vendas;
+	}
+	
+	/*
+	 * Metódo para retornar vendas de um codigoVenda
+	 *
+	 * @param int
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorCodigo(int codigo) throws SQLException {
+		stat = query.getPrepared(con, "Venda.Listar.Por.Codigo" );
+		stat.setInt(1, codigo);
 		res = stat.executeQuery();
 		ArrayList<Venda> vendas = new ArrayList<Venda>();
 		Venda venda = null;

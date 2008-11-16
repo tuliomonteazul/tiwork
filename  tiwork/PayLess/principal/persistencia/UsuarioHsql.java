@@ -85,6 +85,30 @@ public class UsuarioHsql implements UsuarioDao {
 	}
 	
 	/*
+	 * Metódo para retornar um usuario por seu codigo
+	 *
+	 * @param int
+	 * @return Usuario
+	*/
+	public Usuario trazerUsuarioPorCodigo(int cod)
+			throws SQLException {
+		stat = query.getPrepared(con,"Usuario.Trazer.Por.Codigo" );
+		stat.setInt(1,cod);
+		res = stat.executeQuery();
+		Usuario usuario = null;
+		if(res.next()){
+			usuario = new Usuario();
+			usuario.setCod(res.getInt("id"));
+			usuario.setNome(res.getString("nome"));
+			usuario.setSenha(res.getString("senha"));
+			usuario.setLogin(res.getString("login"));
+			usuario.setPapel(res.getInt("papel"));
+				
+		}
+		return usuario;
+	}
+	
+	/*
 	 * Metódo para retornar um usuario pelo seu login
 	 *
 	 * @param String
