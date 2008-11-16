@@ -29,17 +29,17 @@
 </head>
 <body onload="VerificarMsg()">
 <table width="300" align="center">
+	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td align="center">
 		<font face="tahoma" size="2">
 		<div id="msg"></div>
 	</font></td></tr>
-	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Funcionario</legend>
 		<table>
 			<tr><td><a href="/PayLess/funcionario/cadastrarUsuario.jsp">Cadastrar Usuário</a></td></tr>
 			<tr><td><a href="/PayLess/Controller?method=AquisicaoRemedioListar">Aquisição de Remédio</a></td></tr>
 			<tr><td><a href="/PayLess/Controller?method=EfetuarVendaListar">Efetuar Venda de Remédio</a></td></tr>
-			<tr><td><a href="/PayLess/funcionario/buscarRemedio.jsp">Buscar Rémedio por Sintomas</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=BuscarRemedioListar">Buscar Rémedio por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/funcionario/visualizarVendas.jsp">Visualizar Detalhes de Vendas</a></td></tr>
 		</table>
 	

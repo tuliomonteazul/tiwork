@@ -28,11 +28,18 @@
 	}
 	function validarCampos() {
 		var qtd = document.forms[0].quantidade.value;
+		var valor = document.forms[0].valor.value;
 		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
 		if (qtd<0){
 			msg = msg+'* O campo Quantidade deve ser positivo<br>';
+		}
+		if (qtd==''){
+			msg = msg+'* O campo Quantidade deve ser preenchido<br>';
+		}
+		if (valor==''){
+			msg = msg+'* O campo Valor deve ser preenchido<br>';
 		}
 		mensagem.innerHTML = msg;
 		if(msg.length<1){
@@ -43,11 +50,11 @@
 </head>
 <body onload="VerificarMsg()">
 <table width="300" align="center">
+	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td align="center">
 		<font face="tahoma" size="2">
 		<div id="msg"></div>
 	</font></td></tr>
-	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
 	<form action="Controller?method=AquisicaoRemedioInserir" method='post'>
 		<table align="center">
