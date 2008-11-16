@@ -26,6 +26,36 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
+	function validarNome() {
+		var nome = document.forms[0].remedio.value;
+		var mensagem = document.getElementById('erro');
+		var msg = mensagem.innerHTML;
+		msg = "";
+		if (nome==''){
+			msg = msg+'* O campo Nome deve ser preenchido.<br>';
+		}
+		mensagem.innerHTML = msg;
+		if(msg.length<1){
+			document.forms[0].submit();
+		}
+	}
+	function validarDatas() {
+		var dataInicio = document.forms[1].dc1.value;
+		var dataFim = document.forms[1].dc2.value;
+		var mensagem = document.getElementById('erro');
+		var msg = mensagem.innerHTML;
+		msg = "";
+		if (dataInicio==''){
+			msg = msg+'* O campo Data Fim deve ser preenchido.<br>';
+		}
+		if (dataFim==''){
+			msg = msg+'* O campo Data Início deve ser preenchido.<br>';
+		}
+		mensagem.innerHTML = msg;
+		if(msg.length<1){
+			document.forms[1].submit();
+		}
+	}
 </script>
 </head>
 <body onload="VerificarMsg()">
@@ -42,7 +72,7 @@
 			<tr>
 				<td>Nome:</td>
 				<td><input type="text" name="remedio"/></td>
-				<td><input type='submit' value='Buscar'/></td>
+				<td><input type='button' value='Buscar' onclick="validarNome();"/></td>
 			</tr>
 		</table>
 
@@ -60,7 +90,7 @@
 				<td><input class="plain" name="dc2" value="${dataFim}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type='submit' value='Buscar'/></td>
+				<td colspan="2" align="center"><input type='button' value='Buscar' onclick="validarDatas();"/></td>
 			</tr>
 		</table>
 
@@ -71,11 +101,11 @@
 		<fieldset><legend>Lista de Vendas</legend>
 			<table align="center">
 				<tr>
-					<td>Código da Venda</td><td>Código do Funcionário</td><td>Código do Remédio</td><td>Quantidade</td><td>Valor</td><td>Data</td>
+					<td align="center">Venda</td><td align="center">Funcionário</td><td align="center">Remédio</td><td align="center">Quantidade</td><td align="center">Valor</td><td align="center">Data</td>
 				</tr>
 				<c:forEach var="v" items="${requestScope.vendas}">
 					<tr>
-						<td>${v.codVenda}</td><td>${v.codFuncionario}</td><td>${v.codRemedio}</td><td>${v.quantidade}</td><td>${v.valor}</td><td>${v.data}</td>
+						<td align="center">${v.codVenda}</td><td align="center">${v.nomeFuncionario}</td><td align="center">${v.nomeRemedio}</td><td align="center">${v.quantidade}</td><td align="center">${v.valor}</td><td align="center">${v.dataString}</td>
 					</tr>
 				</c:forEach>
 			</table>
