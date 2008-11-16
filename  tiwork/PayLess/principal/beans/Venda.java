@@ -7,6 +7,7 @@ public class Venda {
 	private int codVenda, codRemedio, codFuncionario, quantidade;
 	private double valor;
 	private Date data;
+	private String nomeRemedio, nomeFuncionario, dataString;
 
 	public Date getData() {
 		return data;
@@ -83,8 +84,32 @@ public class Venda {
 		this.valor = valor;
 	}
 	
+	public String getNomeRemedio() {
+		return nomeRemedio;
+	}
+
+	public void setNomeRemedio(String nomeRemedio) {
+		this.nomeRemedio = nomeRemedio;
+	}
+
+	public String getNomeFuncionario() {
+		return nomeFuncionario;
+	}
+
+	public void setNomeFuncionario(String nomeFuncionario) {
+		this.nomeFuncionario = nomeFuncionario;
+	}
+
+	public String getDataString() {
+		return dataString;
+	}
+
+	public void setDataString(String dataString) {
+		this.dataString = dataString;
+	}
+
 	/*
-	 * Metódo para transformar uma data em String em java.sql.Date
+	 * Metódo para transformar uma data String em java.sql.Date
 	 *
 	 * @param String
 	 * @return Date
@@ -98,6 +123,23 @@ public class Venda {
 		GregorianCalendar calendar = new GregorianCalendar(Integer.parseInt(ano), (Integer.parseInt(mes)-1), Integer.parseInt(dia));
 		date = new Date(calendar.getTimeInMillis());
 		return date;
+	}
+	
+	/*
+	 * Metódo para transformar uma data em java.sql.Date em String
+	 *
+	 * @param Date
+	 * @return String
+	 * @throws SQLException
+	*/
+	public static String dataDateToString(Date date) {
+		String data = "";
+		String dateString = date.toString();
+		String ano = dateString.substring(0,4);
+		String mes = dateString.substring(5,7);
+		String dia = dateString.substring(8,10);
+		data = dia+"/"+mes+"/"+ano;
+		return data;
 	}
 	
 }
