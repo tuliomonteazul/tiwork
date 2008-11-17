@@ -18,7 +18,7 @@ public class DoencaNegocio {
 		dao = new  DoencaHsql();
 		med = new MedicamentoNegocio();
 	}
-	public List<Doencas> trazerPorSintomas(String [] sintomas) throws SQLException{
+	public List<Doencas> trazerPorSintomas(String []sintomas) throws SQLException{
 		List<Doencas> doencas = new ArrayList<Doencas>();
 		List<Doencas> d1;
 		for (int i=0;i<sintomas.length;i++){
@@ -27,9 +27,15 @@ public class DoencaNegocio {
 				doencas.add(doenca);
 			}
 		}
+		boolean teste;
 		for(Doencas doenca:doencas){
 			for(int i=0;i<sintomas.length;i++){
-				//if()
+				teste=false;
+				for(int j=0;j<doenca.getSintomas().size();j++){
+					if(sintomas[i].equals(doenca.getSintomas().get(j))){
+						teste=true;
+					}
+				}
 			}
 		}
 		return doencas;
