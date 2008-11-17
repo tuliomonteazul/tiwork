@@ -49,8 +49,7 @@
 			<tr><td><a href="${listar}">Cadastrar Medicamento</a></td></tr>
 			<tr><td><a href="${sintomas}">Cadastrar Tipo de Doenças</a></td></tr>
 			<tr><td><a href="${sintoma}">Consultar Doenças Por Sintomas</a></td></tr>
-			<tr><td><a href="/PayLess/farmaceutico/cadastrarMedicacao.jsp">Cadastrar Medicação</a></td></tr>
-			<tr><td><a href="/PayLess/farmaceutico/visualizarRemedios.jsp">Visualizar Remédios</a></td></tr>
+			<tr><td><a href="/PayLess/farmaceutico/listarRemedios.jsp">Listar Remédios</a></td></tr>
 		</table>
 
 	</fieldset></td></tr>

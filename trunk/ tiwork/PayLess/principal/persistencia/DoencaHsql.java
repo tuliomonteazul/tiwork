@@ -18,7 +18,7 @@ public class DoencaHsql implements DoencaDao {
 	private HsqlSource hs;
 	private Connection conn;
 	private QueryManager query;
-	private ResultSet res,res2;
+	private ResultSet res,res2,res3;
 	public DoencaHsql() throws ClassNotFoundException, SQLException, FileNotFoundException, IOException{
 		hs = HsqlSource.getInstance();
 		conn = hs.getConnection();
@@ -57,20 +57,45 @@ public class DoencaHsql implements DoencaDao {
 	}
 
 	public List<Doencas> trazerPorSintoma(String sintomas) throws SQLException{
-		stat = query.getPrepared(conn, "Sintomas.Doenca.Trazer");
+		stat = query.getPrepared(conn, "Sintomas.trazer");
 		stat.setString(1,sintomas);
 		res = stat.executeQuery();
 		List<Doencas>doencas = new ArrayList<Doencas>();
+		List<String>sint = new ArrayList<String>();
+		List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
 		Doencas aux;
-		while(res.next()){
+		if(res.next()){
 			aux = new Doencas();
-			aux.setNome(res.getString("DESCRICAO"));
-			aux.setCod(res.getInt("COD"));
-			stat = query.getPrepared(conn,"SintomasDoenca.trazerPorCodDoenca");
-			stat.setInt(1, aux.getCod());
+			sint.add(res.getString("descricao"));
+			stat = query.getPrepared(conn,"SintomasDoenca.trazerPorCodSintoma");
+			stat.setInt(1, res.getInt("COD"));
+			res2 = stat.executeQuery();
+			Medicamentos med;
+			while(res2.next()){
+				stat = query.getPrepared(conn,"Doenca.TrazerPorCod");
+				stat.setInt(1, res2.getInt("COD_DOENCA"));
+				res3 = stat.executeQuery();
+				if(res3.next()){
+					aux.setNome(res3.getString("DESCRICAO"));
+					aux.setCod(res3.getInt("COD"));
+					aux.setSintomas(sint);
+					stat = query.getPrepared(conn, "DoencaMedicacao.trazerPorCodDoenca");
+					stat.setInt(1, aux.getCod());
+					res = stat.executeQuery();
+					while(res.next()){
+						stat = query.getPrepared(conn, "Medicamentos.PegarPorCod");
+						stat.setInt(1, res.getInt("COD_MEDICAMENTO"));
+						res3 = stat.executeQuery();
+						med = new Medicamentos();
+						med.setCod(res3.getInt("COD"));
+						// TODO FALTA COMPLETAR O RESTO
+						medicamentos.add(med);
+					}
+					aux.setMedicamentos(medicamentos);
+				}
+				doencas.add(aux);
+			}
 			
-			
-			doencas.add(aux);
 		}
 		return doencas;
 	}
