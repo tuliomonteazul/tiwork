@@ -80,6 +80,19 @@ public class VendaNegocio{
 		return vendas;
 	}
 
-	
+	/*
+	 * Metódo para retornar vendas de um codigoVenda em um período
+	 *
+	 * @param int
+	 * @param Date
+	 * @param Date
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorCodigoData(int codigo, Date dataInicio, Date dataFim) throws SQLException {
+		ArrayList<Venda> vendas = null;
+		vendas = vendaoDao.listarVendaPorCodigoData(codigo, dataInicio, dataFim);
+		return vendas;
+	}
 
 }

@@ -47,6 +47,7 @@ public class DoencaNegocio {
 	}
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException{
+//TODO FALTA COLOCAR CODIGO DA DOENCA
 		dao.cadastrarDoenca(doenca);
 		for(String sintomas:doenca.getSintomas()){
 			dao.insereSintoma(doenca.getNome(),sintomas);
