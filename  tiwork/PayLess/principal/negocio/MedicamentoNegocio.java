@@ -26,7 +26,6 @@ public class MedicamentoNegocio{
 			}else{
 				med.cadastrarMedicamentos(m);
 			}
-			
 		}else{
 			med.cadastrarMedicamentos(m);
 		}
