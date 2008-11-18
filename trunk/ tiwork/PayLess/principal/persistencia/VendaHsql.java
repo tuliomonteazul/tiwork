@@ -122,6 +122,36 @@ public class VendaHsql implements VendaDao {
 		}
 		return vendas;
 	}
+	
+	/*
+	 * Metódo para retornar vendas de um codigoVenda em um período
+	 *
+	 * @param int
+	 * @param Date
+	 * @param Date
+	 * @return ArrayList<Venda>
+	 * @throws SQLException
+	*/
+	public ArrayList<Venda> listarVendaPorCodigoData(int codigo, Date dataInicio, Date dataFim) throws SQLException {
+		stat = query.getPrepared(con, "Venda.Listar.Por.Codigo.Data" );
+		stat.setInt(1, codigo);
+		stat.setDate(2, dataInicio);
+		stat.setDate(3, dataFim);
+		res = stat.executeQuery();
+		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		Venda venda = null;
+		while(res.next()){
+			venda = new Venda();
+			venda.setCodVenda(res.getInt("codVenda"));
+			venda.setCodRemedio(res.getInt("codRemedio"));
+			venda.setCodFuncionario(res.getInt("codFuncionario"));
+			venda.setQuantidade(res.getInt("quantidade"));
+			venda.setValor(res.getDouble("valor"));
+			venda.setData(res.getDate("data"));
+			vendas.add(venda);
+		}
+		return vendas;
+	}
 
 
 }

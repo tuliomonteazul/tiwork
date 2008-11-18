@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Hotel California</title>
+<title>Pay Less</title>
 <link rel=stylesheet href="padrao.css" type="text/css">
 <script type="text/javascript">
 	function VerificarMsg() {
@@ -29,13 +29,13 @@
 </script>
 </head>
 <body onload="VerificarMsg()">
-	<c:url value="Controller" var="listar">  
+	<c:url value="/PayLess/Controller" var="listar">  
 		<c:param name="method" value="ListarReferencia"/>
 	</c:url>
-	<c:url value="Controller" var="sintomas">  
+	<c:url value="/PayLess/Controller" var="sintomas">  
 		<c:param name="method" value="ListarSintomas"/>
 	</c:url>
-	<c:url value="Controller" var="sintoma">  
+	<c:url value="/PayLess/Controller" var="sintoma">  
 		<c:param name="method" value="ListarSintoma"/>
 	</c:url>
 <table width="300" align="center">
@@ -46,14 +46,14 @@
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Farmaceutico</legend>
 		<table>
-			<tr><td><a href="${listar}">Cadastrar Medicamento</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=ListarReferencia">Cadastrar Medicamento</a></td></tr>
 			<tr><td><a href="${sintomas}">Cadastrar Tipo de Doenças</a></td></tr>
 			<tr><td><a href="${sintoma}">Consultar Doenças Por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/farmaceutico/listarRemedios.jsp">Listar Remédios</a></td></tr>
 		</table>
 
 	</fieldset></td></tr>
-	<tr><td>Login: ${sessionScope.login} - <a href="Controller?method=Logout">(Logout)</a></td></tr>
+	<tr><td><table style="width: 100%"><tr><td></td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
