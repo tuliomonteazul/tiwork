@@ -26,34 +26,28 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
-	function validarNome() {
+	function validarCampos() {
 		var nome = document.forms[0].remedio.value;
+		var dataInicio = document.forms[0].dc1.value;
+		var dataFim = document.forms[0].dc2.value;
 		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
-		if (nome==''){
-			msg = msg+'* O campo Nome deve ser preenchido.<br>';
+		if ((nome=='')&&((dataInicio=='')&&(dataFim==''))){
+			msg = msg+'* O campo Nome ou os campos Datas devem ser preenchidos.<br>';
+		}else {
+			if (nome==''){
+				if (dataInicio==''){
+					msg = msg+'* O campo Data Início deve ser preenchido.<br>';
+				}
+				if (dataFim==''){
+					msg = msg+'* O campo Data Fim deve ser preenchido.<br>';
+				}
+			}
 		}
 		mensagem.innerHTML = msg;
 		if(msg.length<1){
 			document.forms[0].submit();
-		}
-	}
-	function validarDatas() {
-		var dataInicio = document.forms[1].dc1.value;
-		var dataFim = document.forms[1].dc2.value;
-		var mensagem = document.getElementById('erro');
-		var msg = mensagem.innerHTML;
-		msg = "";
-		if (dataInicio==''){
-			msg = msg+'* O campo Data Fim deve ser preenchido.<br>';
-		}
-		if (dataFim==''){
-			msg = msg+'* O campo Data Início deve ser preenchido.<br>';
-		}
-		mensagem.innerHTML = msg;
-		if(msg.length<1){
-			document.forms[1].submit();
 		}
 	}
 </script>
@@ -67,20 +61,12 @@
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Visualizar Venda</legend>
 	<fieldset><legend>Buscar por Remédio</legend>
-	<form action="/PayLess/Controller?method=VisualizarVendas" method='post'>
+	<form name="formulario" action="/PayLess/Controller?method=VisualizarVendas" method='post'>
 		<table align="center">
 			<tr>
 				<td>Nome:</td>
-				<td><input type="text" name="remedio"/></td>
-				<td><input type='button' value='Buscar' onclick="validarNome();"/></td>
+				<td><input type="text" name="remedio" value="${remedio}"/></td>
 			</tr>
-		</table>
-
-	</form>
-	</fieldset>
-	<fieldset><legend>Buscar por período</legend>
-	<form name="formulario" action="/PayLess/Controller?method=VisualizarVendas" method='post'>
-		<table align="center">
 			<tr>
 				<td>Data Início:</td>
 				<td><input class="plain" name="dc1" value="${dataInicio}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
@@ -90,7 +76,7 @@
 				<td><input class="plain" name="dc2" value="${dataFim}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type='button' value='Buscar' onclick="validarDatas();"/></td>
+				<td colspan="2" align="center"><input type='button' value='Buscar' onclick="validarCampos();"/></td>
 			</tr>
 		</table>
 

@@ -55,6 +55,7 @@ public class EfetuarVendaInserirMethod implements Method{
 					estoque = estoqueNegocio.trazerEstoque(e.getCod());
 					if (e.getQuantidade()>estoque.getQuantidade()){
 						req.setAttribute("erro", "ERRO - Quantidade em estoque insuficiente.");
+						d = req.getRequestDispatcher("funcionario/efetuarVenda.jsp");;
 						estoqueSuficiente = false;
 					}
 				}
@@ -74,8 +75,8 @@ public class EfetuarVendaInserirMethod implements Method{
 						estoqueNegocio.alterarQuantidade(e.getCod(), qtd-e.getQuantidade());
 						req.setAttribute("msg", "Venda efetuada com sucesso!");
 					}
+					sessao.removeAttribute("carrinho");
 				}
-				sessao.removeAttribute("carrinho");
 			}else{
 				req.setAttribute("erro", "ERRO - Você deve estar logado para efetuar uma venda.");
 			}

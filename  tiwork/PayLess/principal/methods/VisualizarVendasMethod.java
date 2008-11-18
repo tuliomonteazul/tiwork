@@ -37,16 +37,18 @@ public class VisualizarVendasMethod implements Method{
 		int codRemedio = 0;
 		
 		try {
+			vendaNegocio = new VendaNegocio();
+			medicamentoNegocio = new MedicamentoNegocio();
+			estoqueNegocio = new EstoqueNegocio();
+			usuarioNegocio = new UsuarioNegocio();
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
 			String dc1 = req.getParameter("dc1");
 			String dc2 = req.getParameter("dc2");
 			String nome = req.getParameter("remedio");
+			req.setAttribute("remedio", nome);
 			req.setAttribute("dataInicio", dc1);
 			req.setAttribute("dataFim", dc2);
-			if (!(("".equals(dc1)&&"".equals(dc2))||(dc1==null&&dc2==null))){
-				vendaNegocio = new VendaNegocio();
-				estoqueNegocio = new EstoqueNegocio();
-				usuarioNegocio = new UsuarioNegocio();
+			if (!(("".equals(dc1)&&"".equals(dc2))||(dc1==null&&dc2==null))&&(("".equals(nome)||nome==null))){
 				dataInicio = Venda.dataStringToDate(dc1);
 				dataFim = Venda.dataStringToDate(dc2);
 				vendas = vendaNegocio.listarVendaPorData(dataInicio, dataFim);
@@ -64,16 +66,44 @@ public class VisualizarVendasMethod implements Method{
 					req.setAttribute("vendas", vendas);
 				}
 			}else{
-				if (!("".equals(nome)||nome==null)){
-					medicamentoNegocio = new MedicamentoNegocio();
-					vendaNegocio = new VendaNegocio();
+				if (!("".equals(nome)||nome==null)&&(("".equals(dc1)&&"".equals(dc2))||(dc1==null&&dc2==null))){
 					medicamentos = medicamentoNegocio.trazer(nome);
 					codRemedio = medicamentos.getCod();
 					vendas = vendaNegocio.listarVendaPorCodigo(codRemedio);
+					for (Venda v : vendas){
+						nomeRemedio = estoqueNegocio.trazerEstoque(v.getCodRemedio()).getNome();
+						v.setNomeRemedio(nomeRemedio);
+						nomeFuncionario = usuarioNegocio.trazerUsuarioPorCodigo(v.getCodFuncionario()).getNome();
+						v.setNomeFuncionario(nomeFuncionario);
+						dataString = Venda.dataDateToString(v.getData());
+						v.setDataString(dataString);
+					}
 					if (vendas.size()==0){
 						req.setAttribute("erro", "Não há vendas do remédio "+nome+".");
 					}else {
 						req.setAttribute("vendas", vendas);
+					}
+				}
+				else{
+					if (!("".equals(nome)||nome==null)&&!(("".equals(dc1)&&"".equals(dc2))||(dc1==null&&dc2==null))){
+						medicamentos = medicamentoNegocio.trazer(nome);
+						codRemedio = medicamentos.getCod();
+						dataInicio = Venda.dataStringToDate(dc1);
+						dataFim = Venda.dataStringToDate(dc2);
+						vendas = vendaNegocio.listarVendaPorCodigoData(codRemedio, dataInicio, dataFim);
+						for (Venda v : vendas){
+							nomeRemedio = estoqueNegocio.trazerEstoque(v.getCodRemedio()).getNome();
+							v.setNomeRemedio(nomeRemedio);
+							nomeFuncionario = usuarioNegocio.trazerUsuarioPorCodigo(v.getCodFuncionario()).getNome();
+							v.setNomeFuncionario(nomeFuncionario);
+							dataString = Venda.dataDateToString(v.getData());
+							v.setDataString(dataString);
+						}
+						if (vendas.size()==0){
+							req.setAttribute("erro", "Não há vendas do remédio "+nome+".");
+						}else {
+							req.setAttribute("vendas", vendas);
+						}
 					}
 				}
 			}

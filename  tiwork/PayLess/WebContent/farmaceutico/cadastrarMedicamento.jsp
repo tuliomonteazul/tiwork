@@ -7,20 +7,75 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Pay Less</title>
+<link rel=stylesheet href="padrao.css" type="text/css">
+<script type="text/javascript">
+	function VerificarMsg() {
+		var msgReq = "<%=request.getAttribute("msg")%>";
+		var erroReq = "<%=request.getAttribute("erro")%>";
+		var msgElem = document.getElementById('msg');
+		var erroElem = document.getElementById('erro');
+		var msg = msgElem.innerHTML;
+		var erro = erroElem.innerHTML;
+		msg = "";
+		erro = "";
+		if(msgReq!="null"){
+			msg = msgReq;
+		}
+		if(erroReq!="null"){
+			erro = erroReq;
+		}
+		msgElem.innerHTML = msg;
+		erroElem.innerHTML = erro;
+	}
+	function validarCampos() {
+		var nome = document.forms[0].nome.value;
+		var principio = document.forms[0].principio.value;
+		var peso = document.forms[0].peso.value;
+		var qtd = document.forms[0].quantidade.value;
+		var mensagem = document.getElementById('erro');
+		var msg = mensagem.innerHTML;
+		msg = "";
+		if (nome==''){
+			msg = msg+'* O campo Nome deve ser preenchido<br>';
+		}
+		if (principio==''){
+			msg = msg+'* O campo Princípio deve ser preenchido<br>';
+		}
+		if (peso==''){
+			msg = msg+'* O campo Peso deve ser preenchido<br>';
+		}
+		if (qtd<0){
+			msg = msg+'* O campo Quantidade deve ser positivo<br>';
+		}
+		if (qtd==''){
+			msg = msg+'* O campo Quantidade deve ser preenchido<br>';
+		}
+		mensagem.innerHTML = msg;
+		if(msg.length<1){
+			document.forms[0].submit();
+		}
+	}
+</script>
 </head>
-<body>
-	<form  action="Controller?method=CadastrarMedicamento" method="post">
-	
-		<table>
+<body onload="VerificarMsg()">
+<table width="300" align="center">
+	<tr><td><h2><center>Pay Less</center></h2></td></tr>
+	<tr><td align="center">
+		<font face="tahoma" size="2">
+		<div id="msg"></div>
+	</font></td></tr>
+	<tr><td><fieldset><legend>Cadastrar Medicamento</legend>
+	<form action="/PayLess/Controller?method=CadastrarMedicamento" method='post'>
+		<table align="center">
 			<tr>
-				<td>Nome: <input type='text' name='nome' size="30"/></td>
+				<td>Nome: </td><td> <input type='text' name='nome' size="20"/></td>
 			</tr>
 			<tr>
-				<td>Principio Ativo: <input type='text' name='principio' size="30"/></td>
+				<td>Principio Ativo: </td><td> <input type='text' name='principio' size="20"/></td>
 			</tr>
 			<tr>
-				<td>Tipo Medicamento: 
+				<td>Tipo Medicamento: </td><td>
 					<select  name='tipo' >
 						<option value='drageas'>Drágea</option>
 						<option value='suspensao'>Suspensão</option>
@@ -28,10 +83,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Peso: <input type='text' name='peso'/> </td>
+				<td>Peso: </td><td> <input type='text' name='peso'/> </td>
 			</tr>
 			<tr>
-				<td>Medida: <select name='medida'>
+				<td>Medida: </td><td> <select name='medida'>
 						 		<c:forEach var="item" items="${medidas}">
 									<option value='${item}'>${item}</option>		 
 								 </c:forEach>
@@ -39,15 +94,18 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Quantidade: <input type='text' name='quantidade'/></td>
+				<td>Quantidade: </td><td> <input type='text' name='quantidade'/></td>
 			</tr>
-			<tr>
-				<td>
-					<input type='submit' value='OK'/>
-				</td>
-			</tr>
+			<tr><td colspan="2" align="center">
+			<input type='button' value='Inserir' onclick="validarCampos();"/>
+			</td></tr>
 		</table>
-	</form>
 
+	</form>
+	<tr><td><table style="width: 100%"><tr><td><a href="/PayLess/farmaceutico/farmaceutico.jsp">Voltar</a>  </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+	<tr><td><font face="tahoma" size="2" color="red">
+		<div id="erro"></div>
+	</font></td></tr>
+</table>
 </body>
 </html>

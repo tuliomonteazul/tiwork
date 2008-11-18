@@ -27,13 +27,14 @@ public class MedicamentoHsql implements MedicamentosDao {
 	}
 	public void cadastrarMedicamentos(Medicamentos m) throws SQLException {
 		
+		int codMedida = trazerMedidaCod(m.getMedida());
 		stat = query.getPrepared(con, "Medicamentos.Cadastrar");
 		stat.setString(1, m.getNome());
 		stat.setString(2, m.getPrincipioAtivo());
 		stat.setString(3, m.getTipo());
 		stat.setDouble(4, m.getPeso());
+		stat.setInt(5,codMedida);
 		stat.setInt(6,m.getQuantidade());
-		stat.setInt(5,trazerMedidaCod(m.getMedida()));
 		stat.execute();
 	}
 
