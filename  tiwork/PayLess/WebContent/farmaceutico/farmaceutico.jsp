@@ -29,13 +29,13 @@
 </script>
 </head>
 <body onload="VerificarMsg()">
-	<c:url value="/PayLess/Controller" var="listar">  
+	<c:url value="Controller" var="listar">  
 		<c:param name="method" value="ListarReferencia"/>
 	</c:url>
-	<c:url value="/PayLess/Controller" var="sintomas">  
+	<c:url value="Controller" var="sintomas">  
 		<c:param name="method" value="ListarSintomas"/>
 	</c:url>
-	<c:url value="/PayLess/Controller" var="sintoma">  
+	<c:url value="Controller" var="sintoma">  
 		<c:param name="method" value="ListarSintoma"/>
 	</c:url>
 <table width="300" align="center">

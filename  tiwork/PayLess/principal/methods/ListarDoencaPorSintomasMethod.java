@@ -25,7 +25,7 @@ public class ListarDoencaPorSintomasMethod implements Method {
 			doencaMed = new DoencaNegocio();
 			doenca = doencaMed.trazerPorSintomas(req.getParameterValues("sintomas"));
 			req.setAttribute("doencas", doenca);
-			RequestDispatcher dis = req.getRequestDispatcher("");
+			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/consultarDoencasPorSintomas.jsp");
 			dis.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -8,22 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method='post' action="Controller?method=ListarDoencaPorSintomas">
-	<table>
+<table>
 		<tr>
-			<td>Sintomas: 
 
-			<select name='sintomas'multiple="multiple">
-				<c:forEach var="sintoma" items="${sintomas}">
-					<option value="${sintoma}">${sintoma}</option>
+			<td>Doencas: 
+	<c:if test="${!empty requestScope.doencas}">
+			<select name='doencas'multiple="multiple">
+				<c:forEach var="sintomas" items="${doencas}">
+					<option value="${sintomas.nome}">${sintomas.nome}</option>
 				</c:forEach>
-			</select></td>
+			</select>
+</c:if>
+		</td>
 		</tr>
 
 		<tr>
 			<td><input type='submit' value='ok'/> </td>
 		</tr>
 	</table> 
-</form>
 </body>
 </html>
