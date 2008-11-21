@@ -27,17 +27,25 @@ public class DoencaNegocio {
 				doencas.add(doenca);
 			}
 		}
-		boolean teste;
+		d1 = new ArrayList<Doencas>();
+		int cont;
 		for(Doencas doenca:doencas){
-			for(int i=0;i<sintomas.length;i++){
-				teste=false;
-				for(int j=0;j<doenca.getSintomas().size();j++){
-					if(sintomas[i].equals(doenca.getSintomas().get(j))){
-						teste=true;
+			cont = 0;
+			for(int i = 0;i < doenca.getSintomas().size();i++){
+				for(int j = 0;j < sintomas.length;j++){
+					if(sintomas[i].equals(doenca.getSintomas().get(i))){
+						cont++;
 					}
 				}
 			}
+			if(cont < sintomas.length){
+				d1.add(doenca);
+			}
 		}
+		for(int i=0 ; i < d1.size() ; i++){
+			doencas.remove(d1.get(i));
+		}
+		
 		return doencas;
 		
 		

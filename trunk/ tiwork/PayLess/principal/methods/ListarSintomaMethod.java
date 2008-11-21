@@ -20,6 +20,7 @@ public class ListarSintomaMethod implements Method {
 			DoencaNegocio doenca = new DoencaNegocio();
 			MedicamentoNegocio med = new MedicamentoNegocio();
 			req.setAttribute("sintomas", doenca.listarSintomas());
+			
 			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/consultarDoencas.jsp");
 			dis.forward(req, resp);
 		} catch (ClassNotFoundException e) {
