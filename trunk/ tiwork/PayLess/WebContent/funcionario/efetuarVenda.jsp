@@ -41,8 +41,8 @@
 		<table align="center">
 			<tr>
 				<td>Remédio:</td>
-				<td><input type="text" name="remedio"/></td>
-				<td><input type='submit' value='Buscar'/></td>
+				<td><input type="text" name="remedio" tabindex="5"/></td>
+				<td><input type='submit' value='Buscar' tabindex="6"/></td>
 			</tr>
 		</table>
 
@@ -54,14 +54,14 @@
 			<tr>
 				<td>Remédio:</td>
 				<td>
-					<select name="remedio">
+					<select name="remedio" tabindex="7">
 						<c:forEach var="r" items="${estoques}">
 							<option value="${r.nome}">${r.nome}</option>
 						</c:forEach>
 					</select>
 				</td>
 				<td>
-					<input type='submit' value='Buscar'/>	
+					<input type='submit' value='Buscar' tabindex="8"/>	
 				</td>
 			</tr>
 		</table>
@@ -86,7 +86,7 @@
 			</tr>
 			<tr>
 				<td>Quantidade para a venda:</td>
-				<td><select name="quantidade">
+				<td><select name="quantidade" tabindex="1">
 						<c:forEach var="q" begin="1" end="${estoque.quantidade}">
 							<option value="${q}">${q}</option>
 						</c:forEach>
@@ -94,7 +94,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type='submit' value='Adicionar ao carrinho'/></td>
+				<td colspan="2"><input type='submit' value='Adicionar ao carrinho' tabindex="2"/></td>
 			</tr>
 		</table>
 
@@ -110,11 +110,11 @@
 				</tr>
 				<c:forEach var="c" items="${sessionScope.carrinho}">
 					<tr>
-						<td>${c.nome}</td><td>${c.valor}</td><td>${c.quantidade}</td><td><a href="Controller?method=EfetuarVendaCarrinhoExcluirItem&item=${c.nome}">Excluir</a></td>
+						<td>${c.nome}</td><td>${c.valor}</td><td>${c.quantidade}</td><td><a href="Controller?method=EfetuarVendaCarrinhoExcluirItem&item=${c.nome}" tabindex="3">Excluir</a></td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="2"><input type='submit' value='Efetuar Venda'/></td>
+					<td colspan="2"><input type='submit' value='Efetuar Venda' tabindex="4"/></td>
 				</tr>
 			</table>
 	
