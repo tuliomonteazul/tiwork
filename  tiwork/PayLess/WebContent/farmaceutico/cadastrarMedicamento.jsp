@@ -31,12 +31,13 @@
 	function testeDesabilita(){
 	var tipo =  document.forms[0].tipo.selectedIndex;
 	var qtd = document.getElementById("qtd");
-	var quantidade = document.forms[0].quantidade.value;
-	alert(qtd);
+	var quantidade = document.forms[0].quantidade;
 	if(tipo == '0'){
 		qtd.style.display='block';
+		quantidade.style.display='block';
 	}else{
-		quantidade= null;
+		quantidade.value= '';
+		quantidade.style.display='none';
 		qtd.style.display='none';
 		}
 	}
@@ -84,7 +85,8 @@
 	</font></td></tr>
 	<tr><td><fieldset><legend>Cadastrar Medicamento</legend>
 	<form action="/PayLess/Controller?method=CadastrarMedicamento" method='post'>
-		<table align="center">
+		
+<table align="center">
 			<tr>
 				<td>Nome: </td><td> <input type='text' name='nome' size="20"/></td>
 			</tr>
@@ -110,11 +112,11 @@
 							</select>
 				</td>
 			</tr>
-			
-				<tr id='qtd'>
-					<td> Quantidade: </td><td> <input type='text' name='quantidade'/></td>
+		
+				<tr>
+					<td><div id='qtd'>Quantidade:</div></td> <td><input type='text' name='quantidade'/></td>
 				</tr>
-			
+		
 			<tr><td colspan="2" align="center">
 			<input type='button' value='Inserir' onclick="validarCampos();"/>
 			</td></tr>
@@ -126,5 +128,6 @@
 		<div id="erro"></div>
 	</font></td></tr>
 </table>
+	
 </body>
 </html>
