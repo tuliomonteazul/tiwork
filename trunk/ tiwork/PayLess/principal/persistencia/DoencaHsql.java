@@ -96,9 +96,10 @@ public class DoencaHsql implements DoencaDao {
 						stat = query.getPrepared(conn, "Medicamentos.PegarPorCod");
 						stat.setInt(1, res.getInt("COD_MEDICAMENTO"));
 						res3 = stat.executeQuery();
+						res3.next();
 						med = new Medicamentos();
 						med.setCod(res3.getInt("COD"));
-						med.setNome("");
+						med.setNome(res3.getString("NOME"));
 						med.setPeso(res3.getInt("PESO"));
 						med.setPrincipioAtivo(res3.getString("principio_ativo"));
 						med.setQuantidade(res3.getInt("quantidade"));
