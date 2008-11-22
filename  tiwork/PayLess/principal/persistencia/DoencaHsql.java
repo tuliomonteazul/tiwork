@@ -92,15 +92,25 @@ public class DoencaHsql implements DoencaDao {
 					stat = query.getPrepared(conn, "DoencaMedicacao.trazerPorCodDoenca");
 					stat.setInt(1, aux.getCod());
 					res = stat.executeQuery();
-				/*	while(res.next()){
+					while(res.next()){
 						stat = query.getPrepared(conn, "Medicamentos.PegarPorCod");
 						stat.setInt(1, res.getInt("COD_MEDICAMENTO"));
 						res3 = stat.executeQuery();
 						med = new Medicamentos();
 						med.setCod(res3.getInt("COD"));
-						// TODO FALTA COMPLETAR O RESTO
+						med.setNome("");
+						med.setPeso(res3.getInt("PESO"));
+						med.setPrincipioAtivo(res3.getString("principio_ativo"));
+						med.setQuantidade(res3.getInt("quantidade"));
+						med.setTipo(res3.getString("tipo_medicamento"));
+						
+						stat = query.getPrepared(conn, "Medidas.Pegar");
+						stat.setInt(1, res3.getInt("MEDIDA"));
+						res3 = stat.executeQuery();
+						res3.next();
+						med.setMedida(res3.getString("TIPO"));
 						medicamentos.add(med);
-					}*/
+					}
 					aux.setMedicamentos(medicamentos);
 					doencas.add(aux);
 				}
