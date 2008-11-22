@@ -24,10 +24,10 @@ public class MedicamentoNegocio{
 			if( m.getQuantidade() <= 0){
 				throw new Exception();
 			}else{
-				med.cadastrarMedicamentos(m);
+				med.cadastrarMedicamentos(m,tipo);
 			}
 		}else{
-			med.cadastrarMedicamentos(m);
+			med.cadastrarMedicamentos(m,tipo);
 		}
 	}
 

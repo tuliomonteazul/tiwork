@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<fieldset title="DOENCAS POR SINTOMAS">
 <table>
 		<tr>
 
@@ -26,5 +27,6 @@
 			<td><input type='submit' value='ok'/> </td>
 		</tr>
 	</table> 
+</fieldset>
 </body>
 </html>

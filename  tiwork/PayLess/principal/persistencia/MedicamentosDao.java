@@ -9,7 +9,7 @@ import beans.Medicamentos;
 import beans.Remedio;
 
 public interface MedicamentosDao {
- void cadastrarMedicamentos(Medicamentos m)throws SQLException;
+ void cadastrarMedicamentos(Medicamentos m,String tipo)throws SQLException;
  Medicamentos trazer(String nomeMedicamento)throws SQLException;
  List<Medicamentos> listar()throws SQLException;
  List<Remedio> listarRemediosPorData(Date dataInicio,Date dataFim)throws SQLException;
