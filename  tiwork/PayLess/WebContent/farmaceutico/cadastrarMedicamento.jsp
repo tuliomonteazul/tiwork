@@ -28,14 +28,28 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
+	function testeDesabilita(){
+	var tipo =  document.forms[0].tipo.selectedIndex;
+	var qtd = document.getElementById("qtd");
+	var quantidade = document.forms[0].quantidade.value;
+	alert(qtd);
+	if(tipo == '0'){
+		qtd.style.display='block';
+	}else{
+		quantidade= null;
+		qtd.style.display='none';
+		}
+	}
 	function validarCampos() {
 		var nome = document.forms[0].nome.value;
+		var tipo = document.forms[0].tipo.selectedIndex;
 		var principio = document.forms[0].principio.value;
 		var peso = document.forms[0].peso.value;
-		//var qtd = document.forms[0].quantidade.value;
+		var qtd = document.forms[0].quantidade.value;
 		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
+		
 		if (nome==''){
 			msg = msg+'* O campo Nome deve ser preenchido<br>';
 		}
@@ -45,12 +59,15 @@
 		if (peso==''){
 			msg = msg+'* O campo Peso deve ser preenchido<br>';
 		}
-		/*if (qtd<0){
+		if(tipo == '0'){
+		if (qtd<0){
 			msg = msg+'* O campo Quantidade deve ser positivo<br>';
-		}*/
-		/*if (qtd==''){
+		}
+		if (qtd == ''){
 			msg = msg+'* O campo Quantidade deve ser preenchido<br>';
-		}*/
+		}
+		}
+		
 		mensagem.innerHTML = msg;
 		if(msg.length<1){
 			document.forms[0].submit();
@@ -76,7 +93,7 @@
 			</tr>
 			<tr>
 				<td>Tipo Medicamento: </td><td>
-					<select  name='tipo' >
+					<select  name='tipo' onchange="testeDesabilita()" >
 						<option value='drageas'>Drágea</option>
 						<option value='suspensao'>Suspensão</option>
 					</select>	
@@ -93,9 +110,11 @@
 							</select>
 				</td>
 			</tr>
-			<tr>
-				<td>Quantidade: </td><td> <input type='text' name='quantidade'/></td>
-			</tr>
+			
+				<tr id='qtd'>
+					<td> Quantidade: </td><td> <input type='text' name='quantidade'/></td>
+				</tr>
+			
 			<tr><td colspan="2" align="center">
 			<input type='button' value='Inserir' onclick="validarCampos();"/>
 			</td></tr>
