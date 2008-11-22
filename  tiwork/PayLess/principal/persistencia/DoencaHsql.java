@@ -61,11 +61,10 @@ public class DoencaHsql implements DoencaDao {
 		stat.setString(1,sintomas);
 		res = stat.executeQuery();
 		List<Doencas>doencas = new ArrayList<Doencas>();
-		List<String>sint = new ArrayList<String>();
+		List<String>sint;
 		List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
 		Doencas aux;
 		if(res.next()){
-			sint.add(res.getString("descricao"));
 			stat = query.getPrepared(conn,"SintomasDoenca.trazerPorCodSintoma");
 			stat.setInt(1, res.getInt("COD"));
 			res2 = stat.executeQuery();
@@ -75,14 +74,25 @@ public class DoencaHsql implements DoencaDao {
 				stat.setInt(1, res2.getInt("COD_DOENCA"));
 				res3 = stat.executeQuery();
 				if(res3.next()){
+					sint =  new ArrayList<String>();
 					aux = new Doencas();
 					aux.setNome(res3.getString("DESCRICAO"));
 					aux.setCod(res3.getInt("COD"));
+					stat = query.getPrepared(conn, "SintomasDoenca.trazerPorCodDoenca");
+					stat.setInt(1, aux.getCod());
+					res = stat.executeQuery();
+					while(res.next()){
+						stat = query.getPrepared(conn, "Sintomas.trazerPorCod");
+						stat.setInt(1, res.getInt("COD_SINTOMAS"));
+						res3 = stat.executeQuery();
+						res3.next();
+						sint.add(res3.getString("DESCRICAO"));
+					}
 					aux.setSintomas(sint);
 					stat = query.getPrepared(conn, "DoencaMedicacao.trazerPorCodDoenca");
 					stat.setInt(1, aux.getCod());
 					res = stat.executeQuery();
-					while(res.next()){
+				/*	while(res.next()){
 						stat = query.getPrepared(conn, "Medicamentos.PegarPorCod");
 						stat.setInt(1, res.getInt("COD_MEDICAMENTO"));
 						res3 = stat.executeQuery();
@@ -90,7 +100,7 @@ public class DoencaHsql implements DoencaDao {
 						med.setCod(res3.getInt("COD"));
 						// TODO FALTA COMPLETAR O RESTO
 						medicamentos.add(med);
-					}
+					}*/
 					aux.setMedicamentos(medicamentos);
 					doencas.add(aux);
 				}

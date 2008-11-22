@@ -13,7 +13,7 @@ import persistencia.DoencaHsql;
 
 public class DoencaNegocio {
 	private DoencaDao dao;
-	private MedicamentoNegocio med;
+	private MedicamentoNegocio med; 
 	public DoencaNegocio() throws FileNotFoundException, ClassNotFoundException, SQLException, IOException{
 		dao = new  DoencaHsql();
 		med = new MedicamentoNegocio();
@@ -27,18 +27,29 @@ public class DoencaNegocio {
 				doencas.add(doenca);
 			}
 		}
+		d1 = new ArrayList<Doencas>();;
+		for(int i = 0;i < doencas.size();i++){
+			for(int j = i+1; j < doencas.size()-1 ; j++){
+				if(doencas.get(i).getNome().equals(doencas.get(j).getNome())){
+					d1.add(doencas.get(j));
+				}
+			}
+		}
+		for(int i=0 ; i < d1.size() ; i++){
+			doencas.remove(d1.get(i));
+		}
 		d1 = new ArrayList<Doencas>();
 		int cont;
 		for(Doencas doenca:doencas){
 			cont = 0;
-			for(int i = 0;i < doenca.getSintomas().size();i++){
-				for(int j = 0;j < sintomas.length;j++){
-					if(sintomas[i].equals(doenca.getSintomas().get(i))){
+			for(int j = 0;j < sintomas.length;j++){
+				for(int i = 0;i < doenca.getSintomas().size();i++){
+					if(sintomas[j].equals(doenca.getSintomas().get(i))){
 						cont++;
 					}
 				}
 			}
-			if(cont < sintomas.length){
+			if(cont < doenca.getSintomas().size()){
 				d1.add(doenca);
 			}
 		}
