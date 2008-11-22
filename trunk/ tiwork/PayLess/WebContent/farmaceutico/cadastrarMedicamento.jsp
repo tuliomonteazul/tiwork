@@ -32,7 +32,7 @@
 		var nome = document.forms[0].nome.value;
 		var principio = document.forms[0].principio.value;
 		var peso = document.forms[0].peso.value;
-		var qtd = document.forms[0].quantidade.value;
+		//var qtd = document.forms[0].quantidade.value;
 		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
@@ -45,12 +45,12 @@
 		if (peso==''){
 			msg = msg+'* O campo Peso deve ser preenchido<br>';
 		}
-		if (qtd<0){
+		/*if (qtd<0){
 			msg = msg+'* O campo Quantidade deve ser positivo<br>';
-		}
-		if (qtd==''){
+		}*/
+		/*if (qtd==''){
 			msg = msg+'* O campo Quantidade deve ser preenchido<br>';
-		}
+		}*/
 		mensagem.innerHTML = msg;
 		if(msg.length<1){
 			document.forms[0].submit();

@@ -25,16 +25,24 @@ public class MedicamentoHsql implements MedicamentosDao {
 		con = hsql.getConnection();
 		query = QueryManager.getInstance();
 	}
-	public void cadastrarMedicamentos(Medicamentos m) throws SQLException {
+	public void cadastrarMedicamentos(Medicamentos m,String tipo) throws SQLException {
 		
 		int codMedida = trazerMedidaCod(m.getMedida());
 		stat = query.getPrepared(con, "Medicamentos.Cadastrar");
-		stat.setString(1, m.getNome());
-		stat.setString(2, m.getPrincipioAtivo());
-		stat.setString(3, m.getTipo());
-		stat.setDouble(4, m.getPeso());
-		stat.setInt(5,codMedida);
-		stat.setInt(6,m.getQuantidade());
+		if("drageas".equalsIgnoreCase(tipo)){
+			stat.setString(1, m.getNome());
+			stat.setString(2, m.getPrincipioAtivo());
+			stat.setString(3, m.getTipo());
+			stat.setDouble(4, m.getPeso());
+			stat.setInt(5,codMedida);
+			stat.setInt(6,m.getQuantidade());
+		}else{
+			stat.setString(1, m.getNome());
+			stat.setString(2, m.getPrincipioAtivo());
+			stat.setString(3, m.getTipo());
+			stat.setDouble(4, m.getPeso());
+			stat.setInt(5,codMedida);
+		}
 		stat.execute();
 	}
 
@@ -100,7 +108,7 @@ public class MedicamentoHsql implements MedicamentosDao {
 		return medidas;
 	}
 	private int trazerMedidaCod(String medida) throws SQLException {
-		stat  = query.getPrepared(con,"Medidas.Pegar");
+		stat  = query.getPrepared(con,"Medidas.PegarPorTipo");
 		stat.setString(1,medida);
 		res = stat.executeQuery();
 		int aux = 0;

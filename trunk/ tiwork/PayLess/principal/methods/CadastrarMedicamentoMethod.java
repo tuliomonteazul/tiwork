@@ -38,7 +38,6 @@ public class CadastrarMedicamentoMethod implements Method{
 				med.setTipo(req.getParameter("tipo"));
 				med.setPeso(Double.parseDouble(req.getParameter("peso")));
 				med.setMedida(req.getParameter("medida"));
-				med.setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
 			}
 			req.setAttribute("medidas", medicamentoNegocio.listarMedidas());
 			medicamentoNegocio.cadastrarMedicamentos(med,req.getParameter("tipo"));
