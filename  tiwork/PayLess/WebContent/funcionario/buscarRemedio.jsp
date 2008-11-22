@@ -27,33 +27,17 @@
 		erroElem.innerHTML = erro;
 	}
 	function validarCampos() {
-		var sintomasDirLength = document.forms[0].sintomasDir.length;
+		var sintomasLength = document.forms[0].sintomas.length;
 		var mensagem = document.getElementById('erro');
 		var msg = mensagem.innerHTML;
 		msg = "";
-		if (sintomasDirLength==0){
-			msg = msg+'* Você deve clicar nos sintomas da coluna esquerda para selecioná-los.<br>';
+		if (sintomasLength==0){
+			msg = msg+'* Selecione os sintomas do paciente.<br>';
 		}
 		mensagem.innerHTML = msg;
 		if(msg.length<1){
 			document.forms[0].submit();
 		}
-	}
-	function passarDir() {
-		var sintomasEsq = document.forms[0].sintomasEsq;
-		var sintomasDir = document.forms[0].sintomasDir;
-		var sintomasDirLength = sintomasDir.length;
-        var sintoma = sintomasEsq.options[sintomasEsq.selectedIndex].value;
-        sintomasDir.options[sintomasDirLength] = new Option(sintoma);
-        sintomasEsq.options[sintomasEsq.selectedIndex] = null;
-	}
-	function passarEsq() {
-		var sintomasEsq = document.forms[0].sintomasEsq;
-		var sintomasDir = document.forms[0].sintomasDir;
-		var sintomasEsqLength = sintomasEsq.length;
-        var sintoma = sintomasDir.options[sintomasDir.selectedIndex].value;
-        sintomasEsq.options[sintomasEsqLength] = new Option(sintoma);
-        sintomasDir.options[sintomasDir.selectedIndex] = null;
 	}
 </script>
 </head>
@@ -68,21 +52,10 @@
 	<fieldset><legend>Lista de Sintomas</legend>
 	<form action="/PayLess/Controller?method=BuscarRemedioDoenca" method='post'>
 		<table align="center">
-			<tr><td align="center">Lista de Sintomas:</td><td align="center">Sintomas do Paciente:</td></tr>
-			<tr>
-				<td><select name="sintomasEsq" size="8" style="width: 150px"m ultiple="multiple" onchange="passarDir();">
-						<c:forEach items="${sintomas}" var="s">
-							<option value="${s}">${s}</option>
-						</c:forEach>
-					</select>
-				</td>
-				<td><select name="sintomasDir" size="8" style="width: 150px" multiple="multiple" onchange="passarEsq();">
-					</select>
-				</td>
-			</tr>
-			<tr><td colspan="2">
+			<tr><td align="center">Sintomas do Paciente:</td></tr>
+			<tr><td>
 					<c:forEach items="${sintomas}" var="s">
-						<input type="checkbox" name="sintomas" value="${s}"/>${s} 
+						<input type="checkbox" name="sintomas" value="${s}"/>${s} <br/>
 					</c:forEach>
 				</td></tr>
 			<tr><td colspan="5" align="right"><input type="button" value="Buscar" onclick="validarCampos();"/></tr>
