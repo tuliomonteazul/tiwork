@@ -48,7 +48,7 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 			vendas = vendaNegocio.listarVendaPorData(dataInicio, dataFim);
 			List<Venda> vendidos = new ArrayList<Venda>();
 			Venda aux;
-			boolean testa;
+			boolean testa,testa1=false;
 			for(Venda v:vendas){
 				aux = new Venda();
 				testa=true;
@@ -63,11 +63,28 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 							aux.setCodRemedio(v.getCodRemedio());
 							aux.setNomeRemedio(v.getNomeRemedio());
 							aux.setQuantidade(aux.getQuantidade()+vendas.get(i).getQuantidade());
-							vendidos.add(aux);
+							testa1=true;
+							
 						}
+					}
+					if(testa1){
+						vendidos.add(aux);
 					}
 				}
 				
+			}
+			int cont = 0;
+			
+			for(Venda v:vendidos){
+				
+				for(int i = cont ; i<vendidos.size();i++){
+					if(v.getQuantidade()<vendidos.get(i).getQuantidade()){
+						aux = v;
+						vendidos.set(cont,vendidos.get(i));
+						vendidos.set(i, aux);
+					}
+				}
+				cont++;
 			}
 			if (vendidos.size()==0){
 				req.setAttribute("erro", "Não há remedios vendidos no período selecionado");
@@ -77,17 +94,17 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 			d.forward(req, resp);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
 			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
 			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
 			d.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
-			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
 			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
 			d.forward(req, resp);
 		}

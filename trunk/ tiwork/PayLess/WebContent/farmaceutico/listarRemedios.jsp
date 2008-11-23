@@ -75,11 +75,11 @@
 		<fieldset><legend>Lista de Vendas</legend>
 			<table align="center">
 				<tr>
-					<td align="center">Venda</td><td align="center">Funcionário</td><td align="center">Remédio</td><td align="center">Quantidade</td><td align="center">Valor</td><td align="center">Data</td>
+					<td align="center">Remédio</td><td align="center">Quantidade</td>
 				</tr>
 				<c:forEach var="v" items="${requestScope.vendas}">
 					<tr>
-						<td align="center">${v.codVenda}</td><td align="center">${v.nomeFuncionario}</td><td align="center">${v.nomeRemedio}</td><td align="center">${v.quantidade}</td><td align="center">${v.valor}</td><td align="center">${v.dataString}</td>
+						<td align="center">${v.nomeRemedio}</td><td align="center">${v.quantidade}</td>
 					</tr>
 				</c:forEach>
 			</table>
