@@ -28,6 +28,12 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
+	function limpar(){
+		var sintomas = document.forms[0].sintomas;
+		for (i = 0; i <= sintomas.length; i++){
+			sintomas[i].checked = false;
+		}
+	}
 </script>
 </head>
 <body onload="VerificarMsg()">
@@ -44,14 +50,21 @@
 			<tr><td align="center">Sintomas do Paciente:</td></tr>
 			<tr><td>
 					<c:forEach items="${sintomas}" var="s">
+						<c:set var="checado" value="false"/>
 						<c:forEach items="${sintomasJsp}" var="s2">
-							<c:param name=""></c:param>
+							<c:if test="${pageScope.s2 eq pageScope.s}">
+								<c:set var="checado" value="true"/>
+							</c:if>
 						</c:forEach>
-							<input type="checkbox" name="sintomas" value="${s}" checked="checked"/>${s} <br/>
-							<input type="checkbox" name="sintomas" value="${s}"/>${s} <br/>
+							<c:if test="${pageScope.checado eq true}">
+								<input type="checkbox" name="sintomas" value="${s}" checked="checked"/>${s} <br/>
+							</c:if>
+							<c:if test="${! (pageScope.checado eq true)}">
+								<input type="checkbox" name="sintomas" value="${s}"/>${s} <br/>
+							</c:if>
 					</c:forEach>
 				</td></tr>
-			<tr><td colspan="5" align="right"><input type="submit" value="Buscar"/></tr>
+			<tr><td colspan="5" align="right"><input type="button" value="Limpar" onclick="javascript: if (confirm('Tem certeza que deseja limpar os campos?')) limpar();"/><input type="submit" value="Buscar"/></tr>
 		</table>
 
 	</form>
