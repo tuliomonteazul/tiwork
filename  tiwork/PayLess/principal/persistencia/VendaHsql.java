@@ -159,32 +159,7 @@ public class VendaHsql implements VendaDao {
 		}
 		return vendas;
 	}
-	public List<Venda> trazer(Date dataInicio, Date dataFim) throws SQLException{
-		/*stat =  query.getPrepared(con, "Venda.trazerPorData");
-		stat.setDate(1, dataInicio);
-		stat.setDate(2, dataFim);
-		res = stat.executeQuery();
-		List<Venda>vendar = new ArrayList<Venda>();
-		Venda aux;
-		while(res.next()){
-			aux = new Venda();
-			aux.setCodFuncionario(res.getInt("CODFUNCIONARIO"));
-			aux.setCodRemedio(res.getInt("CODREMEDIO"));
-			aux.setCodVenda(res.getInt("CODVENDA"));
-			aux.setQuantidade(res.getInt("quantidade"));
-			aux.setValor(res.getDouble("valor"));
-			aux.setData(res.getDate("data"));
-			stat = query.getPrepared(con,"Medicamentos.PegarPorCod");
-			res2 = stat.executeQuery();
-			res2.next();
-			aux.setNomeRemedio(res2.getString("NOME"));
-			vendar.add(aux);
-		}
-		
-		return vendar;
-		*/
-		return null;
-	}
+	
 
 
 }
