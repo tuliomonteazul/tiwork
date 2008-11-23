@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,19 +28,6 @@
 		msgElem.innerHTML = msg;
 		erroElem.innerHTML = erro;
 	}
-	function validarCampos() {
-		var sintomasLength = document.forms[0].sintomas.length;
-		var mensagem = document.getElementById('erro');
-		var msg = mensagem.innerHTML;
-		msg = "";
-		if (sintomasLength==0){
-			msg = msg+'* Selecione os sintomas do paciente.<br>';
-		}
-		mensagem.innerHTML = msg;
-		if(msg.length<1){
-			document.forms[0].submit();
-		}
-	}
 </script>
 </head>
 <body onload="VerificarMsg()">
@@ -55,23 +44,27 @@
 			<tr><td align="center">Sintomas do Paciente:</td></tr>
 			<tr><td>
 					<c:forEach items="${sintomas}" var="s">
-						<input type="checkbox" name="sintomas" value="${s}"/>${s} <br/>
+						<c:forEach items="${sintomasJsp}" var="s2">
+							<c:param name=""></c:param>
+						</c:forEach>
+							<input type="checkbox" name="sintomas" value="${s}" checked="checked"/>${s} <br/>
+							<input type="checkbox" name="sintomas" value="${s}"/>${s} <br/>
 					</c:forEach>
 				</td></tr>
-			<tr><td colspan="5" align="right"><input type="button" value="Buscar" onclick="validarCampos();"/></tr>
+			<tr><td colspan="5" align="right"><input type="submit" value="Buscar"/></tr>
 		</table>
 
 	</form>
 	</fieldset>
 	<c:if test="${!empty requestScope.doencas}">
 		<fieldset><legend>Lista de Doenças Prováveis</legend>
-			<table align="center">
+			<table align="center" width="400">
 				<tr>
-					<td align="center">Nome</td>
+					<td align="center">Nome</td><td align="center">Medicamento</td>
 				</tr>
 				<c:forEach var="d" items="${requestScope.doencas}">
 					<tr>
-						<td align="center">${d.descricao}</td>
+						<td align="center">${d.nome}</td><td align="center">nomeDoMedicamento<img align="absmiddle" src="/PayLess/funcionario/carrinho.jpg" alt="comprar"/></td>
 					</tr>
 				</c:forEach>
 			</table>
