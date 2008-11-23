@@ -3,6 +3,7 @@ package methods;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -51,13 +52,9 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 			dataInicio = Venda.dataStringToDate(dc1);
 			dataFim = Venda.dataStringToDate(dc2);
 			vendas = vendaNegocio.listarVendaPorData(dataInicio, dataFim);
-			for (Venda v : vendas){
-				nomeRemedio = estoqueNegocio.trazerEstoque(v.getCodRemedio()).getNome();
-				v.setNomeRemedio(nomeRemedio);
-				nomeFuncionario = usuarioNegocio.trazerUsuarioPorCodigo(v.getCodFuncionario()).getNome();
-				v.setNomeFuncionario(nomeFuncionario);
-				dataString = Venda.dataDateToString(v.getData());
-				v.setDataString(dataString);
+			List<Venda> vendidos = new ArrayList<Venda>();
+			for(Venda v:vendas){
+				
 			}
 			if (vendas.size()==0){
 				req.setAttribute("erro", "Não há remedios vendidos no período selecionado");

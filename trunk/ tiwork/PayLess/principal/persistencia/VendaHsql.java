@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import beans.Venda;
 
@@ -151,6 +152,21 @@ public class VendaHsql implements VendaDao {
 			vendas.add(venda);
 		}
 		return vendas;
+	}
+	public List<Venda> trazer(Date data) throws SQLException{
+		stat =  query.getPrepared(con, "Venda.trazerPorData");
+		stat.setDate(1, data);
+		res = stat.executeQuery();
+		List<Venda>vendar = new ArrayList<Venda>();
+		Venda aux;
+		while(res.next()){
+			aux = new Venda();
+			aux.setCodFuncionario(res.getInt("CODFUNCIONARIO"));
+			aux.setCodRemedio(res.getInt("CODREMEDIO"));
+		}
+		
+		return vendar;
+		
 	}
 
 
