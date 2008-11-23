@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import negocio.EstoqueNegocio;
 import negocio.MedicamentoNegocio;
@@ -23,13 +24,9 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 	@Override
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
+	
 		List<Venda> vendas = null;
 		VendaNegocio vendaNegocio = null;
-		EstoqueNegocio estoqueNegocio = null;
-		UsuarioNegocio usuarioNegocio = null;
-		MedicamentoNegocio medicamentoNegocio = null;
-		Medicamentos medicamentos = null;
 		Date dataInicio = null;
 		Date dataFim = null;
 		String nomeRemedio = "";
@@ -39,10 +36,7 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 		
 		try {
 			vendaNegocio = new VendaNegocio();
-			medicamentoNegocio = new MedicamentoNegocio();
-			estoqueNegocio = new EstoqueNegocio();
-			usuarioNegocio = new UsuarioNegocio();
-			RequestDispatcher d = req.getRequestDispatcher("funcionario/visualizarVendas.jsp");;
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
 			String dc1 = req.getParameter("dc1");
 			String dc2 = req.getParameter("dc2");
 			String nome = req.getParameter("remedio");
@@ -53,13 +47,32 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 			dataFim = Venda.dataStringToDate(dc2);
 			vendas = vendaNegocio.listarVendaPorData(dataInicio, dataFim);
 			List<Venda> vendidos = new ArrayList<Venda>();
+			Venda aux;
+			boolean testa;
 			for(Venda v:vendas){
+				aux = new Venda();
+				testa=true;
+				for(int i = 0 ;i<vendidos.size();i++){
+					if(vendidos.get(i).getNomeRemedio().equalsIgnoreCase(v.getNomeRemedio())){
+						testa = false;
+					}
+				}
+				if(testa){
+					for(int i = 0 ; i<vendas.size();i++){
+						if(v.getNomeRemedio().equalsIgnoreCase(vendas.get(i).getNomeRemedio())){
+							aux.setCodRemedio(v.getCodRemedio());
+							aux.setNomeRemedio(v.getNomeRemedio());
+							aux.setQuantidade(aux.getQuantidade()+vendas.get(i).getQuantidade());
+							vendidos.add(aux);
+						}
+					}
+				}
 				
 			}
-			if (vendas.size()==0){
+			if (vendidos.size()==0){
 				req.setAttribute("erro", "Não há remedios vendidos no período selecionado");
 			}else {
-				req.setAttribute("vendas", vendas);
+				req.setAttribute("vendas", vendidos);
 			}
 			d.forward(req, resp);
 		} catch (SQLException e) {
