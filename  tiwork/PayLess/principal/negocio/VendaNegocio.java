@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import persistencia.VendaDao;
 import persistencia.VendaHsql;
@@ -94,5 +95,5 @@ public class VendaNegocio{
 		vendas = vendaoDao.listarVendaPorCodigoData(codigo, dataInicio, dataFim);
 		return vendas;
 	}
-
+	
 }

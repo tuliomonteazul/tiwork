@@ -4,11 +4,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Pay Less</title>
+<link rel=stylesheet href="padrao.css" type="text/css">
+<script type="text/javascript">
+	function VerificarMsg() {
+		var msgReq = "<%=request.getAttribute("msg")%>";
+		var erroReq = "<%=request.getAttribute("erro")%>";
+		var msgElem = document.getElementById('msg');
+		var erroElem = document.getElementById('erro');
+		var msg = msgElem.innerHTML;
+		var erro = erroElem.innerHTML;
+		msg = "";
+		erro = "";
+		if(msgReq!="null"){
+			msg = msgReq;
+		}
+		if(erroReq!="null"){
+			erro = erroReq;
+		}
+		msgElem.innerHTML = msg;
+		erroElem.innerHTML = erro;
+	}
+	function validarCampos() {
+		var dataInicio = document.forms[0].dc1.value;
+		var dataFim = document.forms[0].dc2.value;
+		var mensagem = document.getElementById('erro');
+		var msg = mensagem.innerHTML;
+		msg = "";
+		if (dataInicio==''){
+			msg = msg+'* O campo Data Início deve ser preenchido.<br>';
+		}
+		if (dataFim==''){
+			msg = msg+'* O campo Data Fim deve ser preenchido.<br>';
+		}
+		mensagem.innerHTML = msg;
+		if(msg.length<1){
+			document.forms[0].submit();
+		}
+	}
+</script>
 </head>
-<body>
-	<fieldset><legend>Buscar Remédios Mais Vendido</legend>
+<body onload="VerificarMsg()">
+<table width="500" align="center">
+	<tr><td align="center">
+		<font face="tahoma" size="2">
+		<div id="msg"></div>
+	</font></td></tr>
+	<tr><td><h2><center>Pay Less</center></h2></td></tr>
+	<tr><td><fieldset><legend>Visualizar Venda</legend>
+	<fieldset><legend>Buscar por Remédio</legend>
 	<form name="formulario" action="/PayLess/Controller?method=VisualizarRemediosPorPeriodo" method='post'>
 		<table align="center">
 			<tr>
@@ -26,6 +70,29 @@
 
 	</form>
 	</fieldset>
+
+	<c:if test="${!empty requestScope.vendas}">
+		<fieldset><legend>Lista de Vendas</legend>
+			<table align="center">
+				<tr>
+					<td align="center">Venda</td><td align="center">Funcionário</td><td align="center">Remédio</td><td align="center">Quantidade</td><td align="center">Valor</td><td align="center">Data</td>
+				</tr>
+				<c:forEach var="v" items="${requestScope.vendas}">
+					<tr>
+						<td align="center">${v.codVenda}</td><td align="center">${v.nomeFuncionario}</td><td align="center">${v.nomeRemedio}</td><td align="center">${v.quantidade}</td><td align="center">${v.valor}</td><td align="center">${v.dataString}</td>
+					</tr>
+				</c:forEach>
+			</table>
+	
+		</fieldset>
+	</c:if>
+	</fieldset></td></tr>
+	<tr><td><table style="width: 100%"><tr><td><a href="/PayLess/farmaceutico/farmaceutico.jsp">Voltar</a>  </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+	<tr><td><font face="tahoma" size="2" color="red">
+		<div id="erro"></div>
+	</font></td></tr>
+</table>
+
 <iframe width=132 height=142 name="gToday:contrast:agenda.js" id="gToday:contrast:agenda.js" src="/PayLess/funcionario/DateRange/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
 </iframe>
 </body>
