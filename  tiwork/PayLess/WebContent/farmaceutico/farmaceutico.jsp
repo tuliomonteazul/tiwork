@@ -36,7 +36,7 @@
 		<c:param name="method" value="ListarSintomas"/>
 	</c:url>
 	<c:url value="Controller" var="sintoma">  
-		<c:param name="method" value="ListarSintoma"/>
+		<c:param name="method" value="ListarDoencaPorSintomas"/>
 	</c:url>
 <table width="300" align="center">
 	<tr><td align="center">
