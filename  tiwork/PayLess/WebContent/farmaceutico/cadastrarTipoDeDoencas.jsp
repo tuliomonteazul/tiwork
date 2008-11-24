@@ -10,7 +10,9 @@
 </head>
 <body>
 <form action="Controller?method=CadastrarDoenca" method="post">
+<fieldset><legend>Cadastro de Doença</legend>
 <table align="center">
+
 	<tr>
 		<td>Nome: <input type='text' name='descricao'/></td>
 	</tr>
@@ -34,6 +36,7 @@
 	</tr>
 	<tr><td><input type='submit' value='ok'/></td></tr>
 </table>
+</fieldset>
 </form>
 </body>
 </html>

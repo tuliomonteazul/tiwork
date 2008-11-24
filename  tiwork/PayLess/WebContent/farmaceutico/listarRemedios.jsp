@@ -57,11 +57,11 @@
 		<table align="center">
 			<tr>
 				<td>Data Início:</td>
-				<td><input class="plain" name="dc1" value="${dataInicio}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
+				<td><input class="plain" name="dc1" value="${dataInicio}" readonly size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
 				<td>Data Fim:</td>
-				<td><input class="plain" name="dc2" value="${dataFim}" size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
+				<td><input class="plain" name="dc2" value="${dataFim}" readonly   size="12" onfocus="this.blur()" readonly><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.formulario.dc1,document.formulario.dc2);return false;" HIDEFOCUS><img class="PopcalTrigger" align="absmiddle" src="/PayLess/funcionario/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type='button' value='Buscar' onclick="validarCampos();"/></td>

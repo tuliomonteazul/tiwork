@@ -40,26 +40,23 @@
 				</select>
 				</td>
 			</tr>
-			<tr>
-				<td><input type='submit' value='ok'/> </td>
-			</tr>
 		</table> 
 	</fieldset>
 </c:if>
 <c:if test="${!empty requestScope.medicacao}">
-	<fieldset ><legend>Medicacao por Doenca</legend>
+		<fieldset><legend>Medicacao por Doenca</legend>
 		<table align="center">
 			<tr>
 				<td> 
-				<select name='doencas'multiple="multiple">
-					<c:forEach var="sintomas" items="${doencas}">
-						<option value="${sintomas.nome}">${sintomas.nome}</option>
+				<select name='medicacao'multiple="multiple">
+					<c:forEach var="sintomas" items="${medicacao}">
+						<option value="${sintomas}">${sintomas}</option>
 					</c:forEach>
 				</select>
 				</td>
 			</tr>
 		</table> 
-	</fieldset>
+		</fieldset>
 </c:if>
 </form>
 </body>

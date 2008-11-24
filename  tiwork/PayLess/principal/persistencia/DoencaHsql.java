@@ -62,7 +62,7 @@ public class DoencaHsql implements DoencaDao {
 		res = stat.executeQuery();
 		List<Doencas>doencas = new ArrayList<Doencas>();
 		List<String>sint;
-		List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
+		List<Medicamentos> medicamentos ;
 		Doencas aux;
 		if(res.next()){
 			stat = query.getPrepared(conn,"SintomasDoenca.trazerPorCodSintoma");
@@ -74,6 +74,7 @@ public class DoencaHsql implements DoencaDao {
 				stat.setInt(1, res2.getInt("COD_DOENCA"));
 				res3 = stat.executeQuery();
 				if(res3.next()){
+					medicamentos = new ArrayList<Medicamentos>();
 					sint =  new ArrayList<String>();
 					aux = new Doencas();
 					aux.setNome(res3.getString("DESCRICAO"));
