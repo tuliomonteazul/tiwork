@@ -44,13 +44,10 @@ public class CadastrarMedicamentoMethod implements Method{
 			req.setAttribute("msg", "Medicamento "+req.getParameter("nome")+" cadastrado com sucesso.");
 				
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 			req.setAttribute("erro", "Erro ao tentar cadastrar o medicamento "+req.getParameter("nome"));
 		} catch (SQLException e) {
-			e.printStackTrace();
 			req.setAttribute("erro", "Erro ao tentar cadastrar o medicamento "+req.getParameter("nome"));
 		} catch (Exception e) {
-			e.printStackTrace();
 			req.setAttribute("erro", "Erro ao tentar cadastrar o medicamento "+req.getParameter("nome"));
 		} finally {
 			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarMedicamento.jsp");

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,7 @@ public class CadastrarDoencaMethod implements Method {
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			//Facade fachada = Facade.getInstance();
+			RequestDispatcher dis = req.getRequestDispatcher("/methods.ListarSintomasMethod");
 			MedicamentoNegocio med = new MedicamentoNegocio();
 			DoencaNegocio negocio =  new DoencaNegocio();
 			Doencas doenca =  new Doencas();
@@ -44,15 +45,19 @@ public class CadastrarDoencaMethod implements Method {
 			
 			negocio.cadastrarDoenca(doenca);
 		
+			dis.forward(req,resp);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
+			req.setAttribute("erro", "Não foi possível listar os Sintomas");
+			d.forward(req, resp);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
+			req.setAttribute("erro", "Não foi possível listar os Sintomas");
+			d.forward(req, resp);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
+			req.setAttribute("erro", "Não foi possível listar os Sintomas");
+			d.forward(req, resp);
 		}
 	}
 

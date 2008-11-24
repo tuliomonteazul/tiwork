@@ -22,11 +22,13 @@ public class ListarReferenciaMethod implements Method {
 			dis.forward(req, resp);
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarMedicamento.jsp");
+			req.setAttribute("erro", "Não foi possível listar as Medidas");
+			d.forward(req, resp);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarMedicamento.jsp");
+			req.setAttribute("erro", "Não foi possível listar as Medidas");
+			d.forward(req, resp);
 		}
 		
 

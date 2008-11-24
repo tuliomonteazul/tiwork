@@ -24,11 +24,13 @@ public class ListarSintomasMethod implements Method {
 			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
 			dis.forward(req, resp);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
+			req.setAttribute("erro", "Não foi possível listar os Sintomas");
+			d.forward(req, resp);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/cadastrarTipoDeDoencas.jsp");
+			req.setAttribute("erro", "Não foi possível listar os Sintomas");
+			d.forward(req, resp);
 		}
 		
 
