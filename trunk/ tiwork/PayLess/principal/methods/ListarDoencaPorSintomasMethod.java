@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.DoencaNegocio;
+import negocio.MedicamentoNegocio;
 
 import beans.Doencas;
 
@@ -23,9 +24,17 @@ public class ListarDoencaPorSintomasMethod implements Method {
 		DoencaNegocio doencaMed;
 		try {
 			doencaMed = new DoencaNegocio();
-			doenca = doencaMed.trazerPorSintomas(req.getParameterValues("sintomas"));
+			
+			DoencaNegocio doenca1 = new DoencaNegocio();
+			MedicamentoNegocio med = new MedicamentoNegocio();
+			req.setAttribute("sintomas", doenca1.listarSintomas());
+			if(req.getParameterValues("sintomas")!= null){
+			doenca = doencaMed.trazerPorSintomas(req.getParameterValues("sintomas"));	
+			}else{
+			doenca = null;
+			}
 			req.setAttribute("doencas", doenca);
-			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/consultarDoencasPorSintomas.jsp");
+			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/consultarDoencas.jsp");
 			dis.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
