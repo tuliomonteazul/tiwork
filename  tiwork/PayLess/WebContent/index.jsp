@@ -35,21 +35,12 @@
 	</font></td></tr>
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Login</legend>
-	<form action="Controller?method=EfetuarLogin" method='post'>
-		<table align="center">
-			<tr>
-				<td>Login:</td><td><input type='text' name='login'/></td>
-			</tr>
-			<tr>
-				<td>Senha:</td><td><input type='password' name='senha'/></td>
-			</tr>	
-			<tr>
-				<td></td><td><input type='submit' value='OK'/></td>
-			</tr>
-		</table>
-
-	</form>
-	<tr><td><font face="tahoma" size="2" color="red">
+	<table align="center">
+		<tr><td align="center"><a href="/PayLess/funcionario/funcionario.jsp">Funcionário</a></td></tr>
+		<tr><td align="center"><a href="/PayLess/farmaceutico/farmaceutico.jsp">Farmacêutico</a></td></tr>
+		<tr><td><font face="tahoma" size="2" color="red">
+	</table>
+	</fieldset>
 		<div id="erro"></div>
 	</font></td></tr>
 </table>

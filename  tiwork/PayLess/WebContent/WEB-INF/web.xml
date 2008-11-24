@@ -18,11 +18,55 @@
 	<welcome-file-list>
 			<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Funcionario</web-resource-name>
+			<url-pattern>/funcionario/*</url-pattern>
+			
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>PUT</http-method>
+			
+		</web-resource-collection>
+		<auth-constraint><role-name>1</role-name></auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Farmaceutico</web-resource-name>
+			<url-pattern>/farmaceutico/*</url-pattern>
+			
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>PUT</http-method>
+		</web-resource-collection>
+		<auth-constraint><role-name>2</role-name></auth-constraint>
+	</security-constraint>
+	
+	<security-role>
+		<description>Funcionario</description>
+		<role-name>1</role-name>
+	</security-role>
+	
+	<security-role>
+		<description>Farmaceutico</description>
+		<role-name>2</role-name>
+	</security-role>
+	
  	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/index.jsp</form-login-page>
-			<form-error-page>/index.jsp</form-error-page>
+			<form-login-page>/autenticacao.jsp</form-login-page>
+			<form-error-page>/autenticacaoError.jsp</form-error-page>
 		</form-login-config>
 	</login-config>
+	
+	<error-page>
+		<error-code>403</error-code>
+		<location>/acessoNegado.jsp</location>
+	</error-page>
+	
 </web-app>
