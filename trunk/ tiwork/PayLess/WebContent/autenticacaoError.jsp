@@ -35,7 +35,6 @@
 	</font></td></tr>
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
 	<tr><td><fieldset><legend>Login</legend>
-	<form action=""j_security_check" method='post'>
 		<table align="center">
 			<tr>
 				<td>error</td>
@@ -43,7 +42,7 @@
 			
 		</table>
 
-	</form>
+	<tr><td><a style="align: right" href="/PayLess/Controller?method=Logout">Voltar</a></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>

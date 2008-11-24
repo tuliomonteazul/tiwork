@@ -29,13 +29,13 @@
 </script>
 </head>
 <body onload="VerificarMsg()">
-	<c:url value="Controller" var="listar">  
+	<c:url value="/PayLess/Controller" var="listar">  
 		<c:param name="method" value="ListarReferencia"/>
 	</c:url>
-	<c:url value="Controller" var="sintomas">  
+	<c:url value="/PayLess/Controller" var="sintomas">  
 		<c:param name="method" value="ListarSintomas"/>
 	</c:url>
-	<c:url value="Controller" var="sintoma">  
+	<c:url value="/PayLess/Controller" var="sintoma">  
 		<c:param name="method" value="ListarDoencaPorSintomas"/>
 	</c:url>
 <table width="300" align="center">
@@ -47,8 +47,8 @@
 	<tr><td><fieldset><legend>Farmaceutico</legend>
 		<table>
 			<tr><td><a href="/PayLess/Controller?method=ListarReferencia">Cadastrar Medicamento</a></td></tr>
-			<tr><td><a href="${sintomas}">Cadastrar Tipo de Doenças</a></td></tr>
-			<tr><td><a href="${sintoma}">Consultar Doenças Por Sintomas</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=ListarSintomas">Cadastrar Tipo de Doenças</a></td></tr>
+			<tr><td><a href="/PayLess/Controller?method=ListarDoencaPorSintomas">Consultar Doenças Por Sintomas</a></td></tr>
 			<tr><td><a href="/PayLess/farmaceutico/listarRemedios.jsp">Listar Remédios</a></td></tr>
 		</table>
 

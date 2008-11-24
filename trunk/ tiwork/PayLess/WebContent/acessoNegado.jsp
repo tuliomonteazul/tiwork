@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pay Less</title>
+<link rel=stylesheet href="padrao.css" type="text/css">
 <style type="text/css">
 a {
 font: 10pt "Tahoma";
@@ -38,31 +39,13 @@ text-decoration: none
 }
 </style>
 </head>
-<body>
+<body onload="VerificarMsg()">
 <table width="300" align="center">
 	<tr><td align="center">
 		<font face="tahoma" size="2">
 		<div id="msg"></div>
 	</font></td></tr>
-	<tr><td><h2><center>Pay Less</center></h2></td></tr>
-	<tr><td><fieldset><legend>Autenticação</legend>
-	<form action="j_security_check" method='post'>
-		<table align="center">
-			<tr>
-				<td>Login:</td><td><input type='text' name='j_username'/></td>
-			</tr>
-			<tr>
-				<td>Senha:</td><td><input type='password' name='j_password'/></td>
-			</tr>	
-			<tr>
-				<td></td><td><input type='submit' value='OK'/></td>
-			</tr>
-		</table>
-
-	</form>
-	<tr><td><font face="tahoma" size="2" color="red">
-		<div id="erro"></div>
-	</font></td></tr>
+	<tr><td>Acesso Negado</td></tr>
 	<tr><td><a style="align: right" href="/PayLess/Controller?method=Logout">Voltar</a></td></tr>
 </table>
 </body>
