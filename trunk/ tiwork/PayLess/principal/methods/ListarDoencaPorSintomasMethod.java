@@ -14,6 +14,7 @@ import negocio.DoencaNegocio;
 import negocio.MedicamentoNegocio;
 
 import beans.Doencas;
+import beans.Medicamentos;
 
 public class ListarDoencaPorSintomasMethod implements Method {
 
@@ -22,17 +23,26 @@ public class ListarDoencaPorSintomasMethod implements Method {
 			throws ServletException, IOException {
 		List<Doencas> doenca ;
 		DoencaNegocio doencaMed;
+		List<String>medicamento;
+		MedicamentoNegocio med;
 		try {
 			doencaMed = new DoencaNegocio();
-			
+			medicamento = new ArrayList<String>();
 			DoencaNegocio doenca1 = new DoencaNegocio();
-			MedicamentoNegocio med = new MedicamentoNegocio();
+			med = new MedicamentoNegocio();
 			req.setAttribute("sintomas", doenca1.listarSintomas());
 			if(req.getParameterValues("sintomas")!= null){
 			doenca = doencaMed.trazerPorSintomas(req.getParameterValues("sintomas"));	
+			for(Doencas d:doenca){
+				for(Medicamentos m : d.getMedicamentos()){
+				medicamento.add(m.getNome()+"-"+d.getNome());
+				}
+			}
 			}else{
 			doenca = null;
 			}
+			
+			req.setAttribute("medicacao", medicamento);
 			req.setAttribute("doencas", doenca);
 			RequestDispatcher dis = req.getRequestDispatcher("farmaceutico/consultarDoencas.jsp");
 			dis.forward(req, resp);

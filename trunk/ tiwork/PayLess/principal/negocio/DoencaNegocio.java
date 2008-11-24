@@ -49,7 +49,7 @@ public class DoencaNegocio {
 					}
 				}
 			}
-			if(cont < doenca.getSintomas().size()){
+			 if(cont < sintomas.length || sintomas.length < doenca.getSintomas().size()){
 				d1.add(doenca);
 			}
 		}
@@ -66,7 +66,7 @@ public class DoencaNegocio {
 	}
 	
 	public void cadastrarDoenca(Doencas doenca) throws SQLException{
-//TODO FALTA COLOCAR CODIGO DA DOENCA
+
 		dao.cadastrarDoenca(doenca);
 		for(String sintomas:doenca.getSintomas()){
 			dao.insereSintoma(doenca.getNome(),sintomas);
