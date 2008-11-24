@@ -87,7 +87,7 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 				cont++;
 			}
 			if (vendidos.size()==0){
-				req.setAttribute("erro", "Não há remedios vendidos no período selecionado");
+				req.setAttribute("erro", "Não houveram remédios comprados no período selecionado");
 			}else {
 				req.setAttribute("vendas", vendidos);
 			}
@@ -95,17 +95,17 @@ public class VisualizarRemediosPorPeriodoMethod implements Method {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
-			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
+			req.setAttribute("erro", "Não foi possível visualizar a lista de Remédios");
 			d.forward(req, resp);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
-			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
+			req.setAttribute("erro", "Não foi possível visualizar a lista de Remédios");
 			d.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 			RequestDispatcher d = req.getRequestDispatcher("farmaceutico/listarRemedios.jsp");;
-			req.setAttribute("erro", "Não foi possível visualizar a lista de vendas");
+			req.setAttribute("erro", "Não foi possível visualizar a lista de Remédios");
 			d.forward(req, resp);
 		}
 	}
