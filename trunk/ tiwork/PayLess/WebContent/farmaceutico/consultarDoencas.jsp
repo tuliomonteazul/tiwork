@@ -58,6 +58,10 @@
 		</table> 
 		</fieldset>
 </c:if>
+		
 </form>
+<table style="width: 100%"><tr><td><form action='/PayLess/farmaceutico/farmaceutico.jsp'>
+<input type='image' src='/PayLess/voltar.gif' value='ok'/>
+</form>  </td><td align="right">  <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table>
 </body>
 </html>
