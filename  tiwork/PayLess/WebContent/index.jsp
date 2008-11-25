@@ -41,8 +41,6 @@
 		<tr><td><font face="tahoma" size="2" color="red">
 	</table>
 	</fieldset>
-		<div id="erro"></div>
-	</font></td></tr>
 </table>
 </body>
 </html>
