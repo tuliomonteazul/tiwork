@@ -63,7 +63,9 @@ text-decoration: none
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
-	<tr><td><a style="align: right" href="/PayLess/Controller?method=Logout">Voltar</a></td></tr>
+	<tr><td><form action='/PayLess/index.jsp'>
+<input type='image' src='/PayLess/voltar.gif' value='ok'/>
+</form></td></tr>
 </table>
 </body>
 </html>
