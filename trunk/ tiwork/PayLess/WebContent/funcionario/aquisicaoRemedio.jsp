@@ -55,7 +55,7 @@
 		<font face="tahoma" size="2">
 		<div id="msg"></div>
 	</font></td></tr>
-	<tr><td><fieldset><legend>Cadastrar Usuário</legend>
+	<tr><td><fieldset><legend>Aquisição de Remédio</legend>
 	<form action="Controller?method=AquisicaoRemedioInserir" method='post'>
 		<table align="center">
 			<tr>
@@ -82,7 +82,7 @@
 	</form>
 	<tr><td><table style="width: 100%"><tr><td><form action='/PayLess/funcionario/funcionario.jsp'>
 <input type='image' src='/PayLess/voltar.gif' value='ok'/>
-</form>  </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+</form>  </td><td align="right"><a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
