@@ -77,7 +77,16 @@
 				</tr>
 				<c:forEach var="d" items="${requestScope.doencas}">
 					<tr>
-						<td align="center">${d.nome}</td><td align="center">nomeDoMedicamento<img align="absmiddle" src="/PayLess/funcionario/carrinho.jpg" alt="comprar"/></td>
+						<td align="center">${d.nome}</td><td align="center">
+						<c:if test="${empty d.medicamentos}">
+								Não há medicamento para essa doença
+						</c:if>
+						<c:if test="${!empty d.medicamentos}">
+							<c:forEach var="m" items="${d.medicamentos}">
+								<a href="/PayLess/Controller?method=BuscarRemedioComprar&remedio=${m.nome}">${m.nome} <img style="border: none;" align="absmiddle" width="20" src="/PayLess/funcionario/carrinho.jpg" alt="comprar"/></a><br/>
+							</c:forEach>
+						</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -89,7 +98,7 @@
 <form action='/PayLess/funcionario/funcionario.jsp'>
 <input type='image' src='/PayLess/voltar.gif' value='ok'/>
 </form>
- </td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+ </td><td align="right"><a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
