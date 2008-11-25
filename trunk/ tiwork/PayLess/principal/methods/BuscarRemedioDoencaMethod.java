@@ -3,6 +3,7 @@ package methods;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Doencas;
+import beans.Estoque;
 import beans.Medicamentos;
 
 import negocio.DoencaNegocio;
+import negocio.EstoqueNegocio;
 import negocio.MedicamentoNegocio;
 
 public class BuscarRemedioDoencaMethod implements Method{
@@ -21,6 +24,9 @@ public class BuscarRemedioDoencaMethod implements Method{
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+		Estoque estoque = null;
+		List<Estoque> estoques = null;
+		EstoqueNegocio estoqueNegocio = null;
 		DoencaNegocio doencaNegocio = null;
 		MedicamentoNegocio medicamentoNegocio = null;
 		ArrayList<Medicamentos> medicamentos = null;
@@ -39,7 +45,6 @@ public class BuscarRemedioDoencaMethod implements Method{
 				medicamentoNegocio = new MedicamentoNegocio();
 				
 				doencas = (ArrayList<Doencas>) doencaNegocio.trazerPorSintomas(sintomasJsp);
-				
 				
 				if (doencas.size()==0){
 					req.setAttribute("erro", "Não há doenças para os sintomas selecionados");
