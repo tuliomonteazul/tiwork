@@ -51,7 +51,7 @@
 		<div id="msg"></div>
 	</font></td></tr>
 	<tr><td><h2><center>Pay Less</center></h2></td></tr>
-	<tr><td><fieldset><legend>Visualizar Venda</legend>
+	<tr><td><fieldset><legend>Visualizar Remedios</legend>
 	<fieldset><legend>Buscar por Remédio</legend>
 	<form name="formulario" action="/PayLess/Controller?method=VisualizarRemediosPorPeriodo" method='post'>
 		<table align="center">
