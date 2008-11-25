@@ -23,7 +23,7 @@ public class CadastrarDoencaMethod implements Method {
 	public void doMethod(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			RequestDispatcher dis = req.getRequestDispatcher("/methods.ListarSintomasMethod");
+			RequestDispatcher dis = req.getRequestDispatcher("/farmaceutico/farmaceutico.jsp");
 			MedicamentoNegocio med = new MedicamentoNegocio();
 			DoencaNegocio negocio =  new DoencaNegocio();
 			Doencas doenca =  new Doencas();
