@@ -41,7 +41,7 @@ public class EfetuarVendaInserirMethod implements Method{
 			estoqueNegocio = new EstoqueNegocio();
 			vendaNegocio = new VendaNegocio();
 			sessao = req.getSession();
-			String login = (String) sessao.getAttribute("login");
+			String login = (String) req.getRemoteUser();
 			RequestDispatcher d = req.getRequestDispatcher("funcionario/funcionario.jsp");;
 			if (login != null){
 				usuario = usuarioNegocio.trazerFuncionario(login);
