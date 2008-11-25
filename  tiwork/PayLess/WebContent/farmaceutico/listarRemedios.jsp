@@ -72,7 +72,7 @@
 	</fieldset>
 
 	<c:if test="${!empty requestScope.vendas}">
-		<fieldset><legend>Lista de Vendas</legend>
+		<fieldset><legend>Lista de Remedios Adquiridos</legend>
 			<table align="center">
 				<tr>
 					<td align="center">Remédio</td><td align="center">Quantidade</td>
