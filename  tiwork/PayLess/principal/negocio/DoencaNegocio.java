@@ -27,9 +27,11 @@ public class DoencaNegocio {
 				doencas.add(doenca);
 			}
 		}
-		d1 = new ArrayList<Doencas>();;
+		d1 = new ArrayList<Doencas>();
+		int cont1=0;
 		for(int i = 0;i < doencas.size();i++){
-			for(int j = i+1; j < doencas.size()-1 ; j++){
+			cont1++;
+			for(int j = cont1; j < doencas.size() ; j++){
 				if(doencas.get(i).getNome().equals(doencas.get(j).getNome())){
 					d1.add(doencas.get(j));
 				}
@@ -38,6 +40,7 @@ public class DoencaNegocio {
 		for(int i=0 ; i < d1.size() ; i++){
 			doencas.remove(d1.get(i));
 		}
+		
 		d1 = new ArrayList<Doencas>();
 		int cont;
 		for(Doencas doenca:doencas){
@@ -49,9 +52,16 @@ public class DoencaNegocio {
 					}
 				}
 			}
-			 if(cont < sintomas.length || sintomas.length < doenca.getSintomas().size()){
-				d1.add(doenca);
-			}
+				 	if(doenca.getSintomas().size() > sintomas.length){
+				 		d1.add(doenca);
+				 	}else{
+				 		if(doenca.getSintomas().size() == sintomas.length && cont!=sintomas.length ){
+				 			d1.add(doenca);
+				 		}
+				 		if(doenca.getSintomas().size() < sintomas.length && cont != doenca.getSintomas().size()){
+				 			d1.add(doenca);
+				 		}
+				 	}
 		}
 		for(int i=0 ; i < d1.size() ; i++){
 			doencas.remove(d1.get(i));
@@ -68,6 +78,8 @@ public class DoencaNegocio {
 	public void cadastrarDoenca(Doencas doenca) throws SQLException{
 
 		dao.cadastrarDoenca(doenca);
+		Doencas aux = dao.trazerDoenca(doenca.getNome());
+		doenca.setCod(aux.getCod());
 		for(String sintomas:doenca.getSintomas()){
 			dao.insereSintoma(doenca.getNome(),sintomas);
 		}
@@ -77,3 +89,4 @@ public class DoencaNegocio {
 	}
 	
 }
+
