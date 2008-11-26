@@ -52,13 +52,13 @@ public class DoencaNegocio {
 					}
 				}
 			}
-				 	if(doenca.getSintomas().size() > sintomas.length){
+				 	if(doenca.getSintomas().size() > sintomas.length && cont!= sintomas.length){
 				 		d1.add(doenca);
 				 	}else{
 				 		if(doenca.getSintomas().size() == sintomas.length && cont!=sintomas.length ){
 				 			d1.add(doenca);
 				 		}
-				 		if(doenca.getSintomas().size() < sintomas.length && cont != doenca.getSintomas().size()){
+				 		if(doenca.getSintomas().size() < sintomas.length){
 				 			d1.add(doenca);
 				 		}
 				 	}
