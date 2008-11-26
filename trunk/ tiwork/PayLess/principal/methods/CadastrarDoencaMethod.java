@@ -43,6 +43,11 @@ public class CadastrarDoencaMethod implements Method {
 			}
 			doenca.setMedicamentos(medicamentos);
 			
+			DoencaNegocio doenca1 = new DoencaNegocio();
+			MedicamentoNegocio med1 = new MedicamentoNegocio();
+			req.setAttribute("medicamentos", med1.listar());
+			req.setAttribute("sintomas", doenca1.listarSintomas());
+			
 			negocio.cadastrarDoenca(doenca);
 		
 			dis.forward(req,resp);
