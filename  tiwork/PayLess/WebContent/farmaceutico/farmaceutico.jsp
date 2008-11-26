@@ -53,7 +53,7 @@
 		</table>
 
 	</fieldset></td></tr>
-	<tr><td><table style="width: 100%"><tr><td></td><td align="right"> Login: ${login} <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
+	<tr><td><table style="width: 100%"><tr><td></td><td align="right"> <a style="align: right" href="/PayLess/Controller?method=Logout">(logout)</a></td></tr></table></td></tr>
 	<tr><td><font face="tahoma" size="2" color="red">
 		<div id="erro"></div>
 	</font></td></tr>
